@@ -63,48 +63,69 @@
         Analyse · Bau · Betrieb
       </text>
 
-      <!-- Model badges — each with a distinct generic icon -->
-      <!-- Badge 1: claude (8-point star icon) -->
+      <!--
+        Model badges — 5 AI providers as generic design-system placeholders.
+        BEFORE GO-LIVE: Replace the <g class="brand-icon"> blocks with the
+        official SVG logos from each provider's brand-kit:
+          • Claude / Anthropic → anthropic.com/news/brand-toolkit
+          • OpenAI / GPT       → openai.com/brand
+          • Google / Gemini    → about.google/brand-resource-center
+          • Mistral AI         → mistral.ai  (brand assets on request)
+          • AlpineAI           → direct request
+      -->
+
+      <!-- Badge 1: Claude — filled disc placeholder -->
       <g transform="translate(52, 178)">
-        <rect x="0" y="0" width="216" height="28" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
-        <g transform="translate(18, 14)">
-          <path d="M 0 -9 L 2 -2 L 9 0 L 2 2 L 0 9 L -2 2 L -9 0 L -2 -2 Z" fill="#0B0F1A" />
+        <rect x="0" y="0" width="216" height="22" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
+        <g class="brand-icon" transform="translate(18, 11)">
+          <circle cx="0" cy="0" r="7" fill="#0B0F1A" />
+          <circle cx="0" cy="0" r="2.5" fill="#ffffff" />
         </g>
-        <text x="120" y="19" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
-          Claude · Anthropic
+        <text x="120" y="15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
+          Claude
         </text>
       </g>
 
-      <!-- Badge 2: GPT (ring icon) -->
-      <g transform="translate(52, 210)">
-        <rect x="0" y="0" width="216" height="28" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
-        <g transform="translate(18, 14)">
-          <circle cx="0" cy="0" r="8" fill="none" stroke="#0B0F1A" stroke-width="2.5" />
-          <circle cx="0" cy="0" r="2.5" fill="#0B0F1A" />
+      <!-- Badge 2: GPT — ring placeholder -->
+      <g transform="translate(52, 204)">
+        <rect x="0" y="0" width="216" height="22" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
+        <g class="brand-icon" transform="translate(18, 11)">
+          <circle cx="0" cy="0" r="7" fill="none" stroke="#0B0F1A" stroke-width="2.5" />
         </g>
-        <text x="120" y="19" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
-          GPT · OpenAI
+        <text x="120" y="15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
+          GPT
         </text>
       </g>
 
-      <!-- Badge 3: mistral (hexagon icon) -->
-      <g transform="translate(52, 242)">
-        <rect x="0" y="0" width="216" height="28" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
-        <g transform="translate(18, 14)">
-          <polygon points="0,-8 7,-4 7,4 0,8 -7,4 -7,-4" fill="none" stroke="#0B0F1A" stroke-width="2.5" />
+      <!-- Badge 3: Gemini — 4-point spark placeholder -->
+      <g transform="translate(52, 230)">
+        <rect x="0" y="0" width="216" height="22" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
+        <g class="brand-icon" transform="translate(18, 11)">
+          <path d="M 0 -8 L 2 -2 L 8 0 L 2 2 L 0 8 L -2 2 L -8 0 L -2 -2 Z" fill="#0B0F1A" />
         </g>
-        <text x="120" y="19" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
-          Mistral · Open-Source
+        <text x="120" y="15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
+          Gemini
         </text>
       </g>
 
-      <!-- Badge 4: AlpineAI (mountain icon) — highlighted dark -->
-      <g transform="translate(28, 282)">
-        <rect x="0" y="0" width="264" height="34" rx="8" fill="#0B0F1A" stroke="#0B0F1A" stroke-width="2.5" />
-        <g transform="translate(20, 17)">
-          <path d="M -10 6 L -4 -4 L -1 2 L 3 -7 L 10 6 Z" fill="#C9FF00" />
+      <!-- Badge 4: Mistral — rotated square placeholder -->
+      <g transform="translate(52, 256)">
+        <rect x="0" y="0" width="216" height="22" rx="6" fill="#ffffff" stroke="#0B0F1A" stroke-width="2" />
+        <g class="brand-icon" transform="translate(18, 11)">
+          <rect x="-6" y="-6" width="12" height="12" fill="#0B0F1A" transform="rotate(45)" />
         </g>
-        <text x="144" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#C9FF00">
+        <text x="120" y="15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#0B0F1A">
+          Mistral
+        </text>
+      </g>
+
+      <!-- Badge 5: AlpineAI — mountain peaks (highlighted dark bg) -->
+      <g transform="translate(28, 284)">
+        <rect x="0" y="0" width="264" height="32" rx="8" fill="#0B0F1A" stroke="#0B0F1A" stroke-width="2.5" />
+        <g class="brand-icon" transform="translate(22, 16)">
+          <path d="M -11 6 L -5 -4 L -1 2 L 3 -7 L 11 6 Z" fill="#C9FF00" />
+        </g>
+        <text x="146" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#C9FF00">
           AlpineAI · 🇨🇭 Swiss-hosted
         </text>
       </g>
