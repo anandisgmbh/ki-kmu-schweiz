@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const phoneRaw = '+41784428888';
 const phoneDisplay = '+41 78 442 88 88';
 
@@ -16,9 +18,10 @@ const navItems = [
       <!-- Brand -->
       <a
         href="#top"
-        class="font-extrabold text-ink-primary tracking-tight text-[15px] md:text-[17px] whitespace-nowrap hover:text-accent-dark transition-colors"
+        class="hover:opacity-80 transition-opacity"
+        aria-label="ki-kmu-schweiz.ch — Startseite"
       >
-        ki-kmu-schweiz.ch
+        <Logo />
       </a>
 
       <!-- Desktop nav -->

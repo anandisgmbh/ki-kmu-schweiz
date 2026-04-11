@@ -1,0 +1,53 @@
+---
+/**
+ * Logo for ki-kmu-schweiz.ch
+ *
+ * Concept: A stylised Swiss cross where the vertical arm stays white
+ * (Swissness) and the horizontal arm is lime (#C9FF00) — representing
+ * the AI layer applied on top of Swiss reliability. On a dark rounded
+ * square so it holds up on both light and dark backgrounds.
+ *
+ * Variants:
+ *   - full (default): icon + wordmark, used in the header
+ *   - icon: icon only, used for small contexts (favicon, avatars)
+ */
+
+interface Props {
+  variant?: 'full' | 'icon';
+  class?: string;
+}
+
+const { variant = 'full', class: className = '' } = Astro.props;
+---
+
+{
+  variant === 'icon' ? (
+    <svg
+      class={className}
+      viewBox="0 0 40 40"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="ki-kmu-schweiz.ch"
+    >
+      <rect x="0" y="0" width="40" height="40" rx="8" fill="#0B0F1A" />
+      <rect x="17" y="8" width="6" height="24" fill="#ffffff" />
+      <rect x="8" y="17" width="24" height="6" fill="#C9FF00" />
+    </svg>
+  ) : (
+    <span class:list={['inline-flex items-center gap-2.5', className]} aria-label="ki-kmu-schweiz.ch">
+      <svg
+        class="h-8 w-8 md:h-9 md:w-9 shrink-0"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <rect x="0" y="0" width="40" height="40" rx="8" fill="#0B0F1A" />
+        <rect x="17" y="8" width="6" height="24" fill="#ffffff" />
+        <rect x="8" y="17" width="24" height="6" fill="#C9FF00" />
+      </svg>
+      <span class="font-extrabold text-ink-primary tracking-tight text-[15px] md:text-[17px] whitespace-nowrap leading-none">
+        ki-kmu-schweiz<span class="text-ink-muted font-bold">.ch</span>
+      </span>
+    </span>
+  )
+}
