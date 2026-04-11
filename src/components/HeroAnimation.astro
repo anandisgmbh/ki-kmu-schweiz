@@ -23,11 +23,11 @@
       opacity="0.06"
     />
 
-    <!-- Swiss cross badge (top-right) -->
+    <!-- Swiss cross badge (top-right) — proper arm proportions -->
     <g class="swiss-cross">
       <rect x="270" y="12" width="38" height="38" rx="5" fill="#DC0018" stroke="#0B0F1A" stroke-width="3" />
-      <rect x="282" y="26" width="14" height="10" fill="#ffffff" />
-      <rect x="284" y="24" width="10" height="14" fill="#ffffff" />
+      <rect x="278" y="28" width="22" height="6" fill="#ffffff" />
+      <rect x="286" y="20" width="6" height="22" fill="#ffffff" />
     </g>
 
     <!-- TOP: Input node -->
@@ -44,10 +44,10 @@
     <!-- Line 1: Input → Center -->
     <line x1="160" y1="70" x2="160" y2="112" stroke="#0B0F1A" stroke-width="2.5" stroke-dasharray="8 6" class="flow flow-1" />
 
-    <!-- "8 Wochen" speed badge (rides top-right corner of center) -->
+    <!-- "8 Wochen" speed badge — floats above center box, right of flow line -->
     <g class="speed-badge">
-      <rect x="212" y="100" width="92" height="24" rx="12" fill="#0B0F1A" stroke="#0B0F1A" stroke-width="2.5" />
-      <text x="258" y="116" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#C9FF00" letter-spacing="0.6">
+      <rect x="196" y="80" width="100" height="22" rx="11" fill="#0B0F1A" stroke="#0B0F1A" stroke-width="2.5" />
+      <text x="246" y="95" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#C9FF00" letter-spacing="0.6">
         ⚡ 8 WOCHEN
       </text>
     </g>
@@ -183,12 +183,12 @@
       </text>
     </g>
     <g>
-      <!-- Tiny swiss signature right-bottom -->
-      <rect x="252" y="586" width="10" height="10" fill="#DC0018" />
-      <rect x="254" y="588" width="6" height="2" fill="#ffffff" />
-      <rect x="256" y="586" width="2" height="6" fill="#ffffff" />
-      <text x="266" y="595" font-family="Inter, sans-serif" font-size="9" font-weight="900" fill="#0B0F1A" letter-spacing="0.8">
-        SWISS HOSTED
+      <!-- Tiny swiss signature — repositioned to fit within viewBox -->
+      <rect x="210" y="586" width="10" height="10" fill="#DC0018" />
+      <rect x="212" y="590" width="6" height="2" fill="#ffffff" />
+      <rect x="214" y="588" width="2" height="6" fill="#ffffff" />
+      <text x="224" y="595" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#0B0F1A" letter-spacing="0.4">
+        HOSTED IN CH
       </text>
     </g>
   </svg>
@@ -255,7 +255,7 @@
 
   .speed-badge {
     animation: speed-pulse 2.4s ease-in-out infinite;
-    transform-origin: 258px 112px;
+    transform-origin: 246px 91px;
   }
   @keyframes speed-pulse {
     0%, 100% { opacity: 0.9; }
