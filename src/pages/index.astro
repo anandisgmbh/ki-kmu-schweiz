@@ -1,17 +1,36 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import LogoSlider from '../components/LogoSlider.astro';
+import Problem from '../components/Problem.astro';
+import OfferCards from '../components/OfferCards.astro';
+import CaseGrid from '../components/CaseGrid.astro';
+import About from '../components/About.astro';
+import Trust from '../components/Trust.astro';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 
+const description =
+  'KI-Beratung für Schweizer KMU: Prozess-Screening, Pilot-Umsetzung, Betrieb. Transparente Fixpreise, 10+ gelieferte Projekte, ein Ansprechpartner mit ETH-Hintergrund.';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="KI-Beratung für Schweizer KMU — ki-kmu-schweiz.ch"
+  description={description}
+>
+  <main>
+    <Hero />
+    <LogoSlider />
+    <Problem />
+    <OfferCards />
+    <CaseGrid />
+    <About />
+    <Trust />
+    <Faq />
+    <Contact />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</BaseLayout>
