@@ -47,4 +47,18 @@ const faqs = defineCollection({
   }),
 });
 
-export const collections = { cases, faqs };
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(300),
+    pubDate: z.date(),
+    updated: z.date().optional(),
+    author: z.string().default('Jannick Oberbeck'),
+    tags: z.array(z.string()),
+    readTime: z.string(),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { cases, faqs, blog };
