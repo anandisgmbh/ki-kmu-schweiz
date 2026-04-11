@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import AiVendorBar from '../components/AiVendorBar.astro';
+import StatsStrip from '../components/StatsStrip.astro';
 import LogoSlider from '../components/LogoSlider.astro';
 import Problem from '../components/Problem.astro';
 import OfferCards from '../components/OfferCards.astro';
-import CaseGrid from '../components/CaseGrid.astro';
+import SuccessStories from '../components/SuccessStories.astro';
+import UseCaseCatalog from '../components/UseCaseCatalog.astro';
 import About from '../components/About.astro';
 import Trust from '../components/Trust.astro';
 import Faq from '../components/Faq.astro';
@@ -13,7 +16,7 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 
 const description =
-  'KI-Beratung für Schweizer KMU: Prozess-Screening, Pilot-Umsetzung, Betrieb. Transparente Fixpreise, 10+ gelieferte Projekte, ein Ansprechpartner mit ETH-Hintergrund.';
+  'KI-Beratung für Schweizer KMU: Prozess-Screening, Pilot-Umsetzung, Betrieb. Transparente Fixpreise, 10+ gelieferte Projekte, ein Ansprechpartner mit ETH-Hintergrund. Integriert Claude, ChatGPT, Mistral und Swiss-hosted AlpineAI.';
 ---
 
 <BaseLayout
@@ -22,10 +25,13 @@ const description =
 >
   <main>
     <Hero />
+    <AiVendorBar />
+    <StatsStrip />
     <LogoSlider />
     <Problem />
     <OfferCards />
-    <CaseGrid />
+    <SuccessStories />
+    <UseCaseCatalog />
     <About />
     <Trust />
     <Faq />

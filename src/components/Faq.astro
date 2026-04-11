@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 
 const faqs = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
 
-// Pre-render each FAQ body using Astro 4 entry.render() API
 const rendered = await Promise.all(
   faqs.map(async (f) => {
     const { Content } = await f.render();
@@ -12,38 +11,44 @@ const rendered = await Promise.all(
 );
 ---
 
-<section id="faq" class="py-section md:py-section-lg bg-bg-card">
+<section id="faq" class="py-section md:py-section-lg bg-bg-primary border-t-2 border-ink-primary">
   <div class="container-page">
-    <div class="max-w-[780px] mb-10">
-      <p class="label-tag text-accent-soft mb-4">Häufige Fragen</p>
-      <h2 class="text-headline text-ink-primary">
-        Was Inhaber vor einem Erstgespräch wissen wollen.
+    <div class="max-w-[840px] mb-12">
+      <p class="label-tag text-accent-dark mb-5">FAQ</p>
+      <h2 class="text-display text-ink-primary">
+        Was Inhaber vor dem <span class="mark-accent">Erstgespräch</span> wissen wollen.
       </h2>
+      <p class="mt-6 text-lg md:text-xl leading-relaxed text-ink-secondary">
+        Die Fragen, die am häufigsten im ersten Gespräch aufkommen. Wenn Ihre
+        Frage nicht dabei ist — schreiben Sie mir direkt auf WhatsApp oder per Mail.
+      </p>
     </div>
 
-    <div class="max-w-[780px] space-y-2">
+    <div class="max-w-[860px] space-y-3">
       {
         rendered.map((f) => (
-          <details class="faq-item group border border-border rounded-card overflow-hidden open:shadow-card">
-            <summary class="list-none cursor-pointer p-5 md:p-6 flex items-start justify-between gap-4 hover:bg-bg-accent/40 transition-colors">
-              <h3 class="text-lg font-serif font-semibold text-ink-primary leading-snug">
+          <details class="faq-item group border-2 border-ink-primary rounded-card overflow-hidden bg-bg-card">
+            <summary class="list-none cursor-pointer p-6 md:p-7 flex items-start justify-between gap-5 hover:bg-bg-accent transition-colors">
+              <h3 class="text-lg md:text-xl font-extrabold text-ink-primary leading-snug tracking-tight">
                 {f.question}
               </h3>
               <svg
-                width="20"
-                height="20"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2.5"
-                class="text-accent shrink-0 mt-1 transition-transform group-open:rotate-180"
+                stroke-width="3"
+                class="text-ink-primary shrink-0 mt-1 transition-transform group-open:rotate-180"
                 aria-hidden="true"
               >
                 <polyline points="6 9 12 15 18 9" />
               </svg>
             </summary>
-            <div class="px-5 pb-6 md:px-6 text-ink-secondary leading-relaxed">
-              <f.Content />
+            <div class="px-6 pb-7 md:px-7 text-ink-secondary leading-relaxed border-t border-border">
+              <div class="pt-5">
+                <f.Content />
+              </div>
             </div>
           </details>
         ))

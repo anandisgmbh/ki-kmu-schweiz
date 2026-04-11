@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+
+const catalog = (await getCollection('cases'))
+  .filter((c) => !c.data.anchor)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Build unique industry filters
+const industries = [
+  ...new Map(catalog.map((c) => [c.data.industry, c.data.industryLabel])).entries(),
+].map(([id, label]) => ({ id, label }));
+---
+
+<section id="use-cases" class="py-section md:py-section-lg bg-bg-soft border-t-2 border-ink-primary">
+  <div class="container-page">
+    <div class="max-w-[840px] mb-10">
+      <p class="label-tag text-accent-dark mb-5">Use-Case-Katalog</p>
+      <h2 class="text-display text-ink-primary">
+        Was wir für Schweizer KMU <span class="mark-accent">bauen</span>.
+      </h2>
+      <p class="mt-6 text-lg md:text-xl leading-relaxed text-ink-secondary">
+        Acht weitere Use-Cases, die wir für deutschsprachige KMU realisieren —
+        branchen-realistisch, mit typischen Ergebnissen aus Vergleichsprojekten.
+        Wenn Sie sich in einem wiedererkennen, ist das der perfekte Start für ein Erstgespräch.
+      </p>
+    </div>
+
+    <div
+      id="catalog-filter"
+      class="flex flex-wrap gap-2 mb-8"
+      role="tablist"
+      aria-label="Use-Cases nach Branche filtern"
+    >
+      <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">
+        Alle
+      </button>
+      {
+        industries.map((i) => (
+          <button type="button" class="filter-btn" data-filter={i.id} aria-pressed="false">
+            {i.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <div id="catalog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        catalog.map((c) => (
+          <article class="card-hoverable p-6 flex flex-col" data-industry={c.data.industry}>
+            <div class="flex items-center justify-between mb-4">
+              <span class="label-tag bg-ink-primary text-accent px-2.5 py-1 rounded">
+                {c.data.industryLabel}
+              </span>
+              <span class="label-tag text-ink-muted">{c.data.useCaseLabel}</span>
+            </div>
+
+            <h3 class="text-xl font-extrabold text-ink-primary mb-3 leading-snug tracking-tight">
+              {c.data.title}
+            </h3>
+
+            <p class="text-xs text-ink-muted font-medium mb-4">
+              {c.data.size} · {c.data.region}
+            </p>
+
+            <p class="text-sm text-ink-secondary leading-relaxed mb-3">
+              <strong class="text-ink-primary">Kontext.</strong> {c.data.pain}
+            </p>
+            <p class="text-sm text-ink-secondary leading-relaxed mb-5">
+              <strong class="text-ink-primary">Was wir bauen.</strong> {c.data.solution}
+            </p>
+
+            <ul class="mt-auto pt-4 border-t-2 border-ink-primary space-y-1.5">
+              {
+                c.data.metrics.map((m) => (
+                  <li class="flex items-start gap-2 text-sm font-bold text-ink-primary leading-snug">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" class="text-accent-dark shrink-0 mt-1" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>{m}</span>
+                  </li>
+                ))
+              }
+              <li class="text-xs font-medium text-ink-muted uppercase tracking-wider pt-2">
+                Typische Umsetzung: {c.data.duration}
+              </li>
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .filter-btn {
+    @apply inline-flex items-center px-4 py-2.5 rounded-btn border-2 border-ink-primary bg-bg-card text-sm font-bold text-ink-primary transition-all hover:bg-accent;
+  }
+  .filter-btn.active {
+    @apply bg-ink-primary text-accent;
+  }
+</style>
+
+<script>
+  const filterBar = document.getElementById('catalog-filter');
+  const grid = document.getElementById('catalog-grid');
+  if (filterBar && grid) {
+    const cards = Array.from(grid.querySelectorAll('[data-industry]')) as HTMLElement[];
+    filterBar.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.matches('.filter-btn')) return;
+      const filter = target.dataset.filter!;
+      filterBar.querySelectorAll('.filter-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn === target);
+        btn.setAttribute('aria-pressed', btn === target ? 'true' : 'false');
+      });
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.dataset.industry === filter;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  }
+</script>
