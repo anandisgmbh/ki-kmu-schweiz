@@ -6,7 +6,7 @@ const offers = [
     number: 1,
     name: 'KI-Potenzial-Check',
     tagline: 'Einstieg mit Substanz',
-    priceParts: { before: '', prefix: 'CHF', value: "2'500", after: '' },
+    price: "CHF 2'500",
     priceNote: 'Fixpreis',
     duration: '~2 Wochen',
     description:
@@ -26,7 +26,7 @@ const offers = [
     number: 2,
     name: 'Pilot-Projekt',
     tagline: 'Vom Konzept zur laufenden Lösung',
-    priceParts: { before: '', prefix: 'CHF', value: "15'000 – 35'000", after: '' },
+    price: "CHF 15'000 – 35'000",
     priceNote: 'Fixpreis nach Assessment',
     duration: '4 – 8 Wochen',
     description:
@@ -46,7 +46,7 @@ const offers = [
     number: 3,
     name: 'Partnerschaft & Betrieb',
     tagline: 'Nach dem Pilot skalieren',
-    priceParts: { before: 'ab', prefix: 'CHF', value: "2'500", after: '' },
+    price: "ab CHF 2'500",
     priceNote: 'pro Monat · min. 6 Monate',
     duration: 'laufend',
     description:
@@ -108,10 +108,8 @@ const offers = [
             </h3>
 
             <div class="mb-5">
-              <p class:list={['text-4xl font-extrabold tabular-nums tracking-tight whitespace-nowrap', o.highlight ? 'text-accent' : 'text-ink-primary']}>
-                {o.priceParts.before && <span class="text-[0.4em] align-top font-bold mr-1">{o.priceParts.before}</span>}
-                <span class="text-[0.4em] align-top font-bold tracking-wider mr-1">{o.priceParts.prefix}</span>
-                {o.priceParts.value}
+              <p class:list={['text-4xl font-extrabold tabular-nums tracking-tight', o.highlight ? 'text-accent' : 'text-ink-primary']}>
+                {o.price}
               </p>
               <p class:list={['text-sm font-medium mt-1', o.highlight ? 'text-white/60' : 'text-ink-muted']}>
                 {o.priceNote} · {o.duration}

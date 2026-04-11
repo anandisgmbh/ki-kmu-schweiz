@@ -13,14 +13,14 @@ const stats = [
       {
         stats.map((s) => (
           <div>
-            <p class="text-stat text-accent tabular-nums whitespace-nowrap">
+            <div class="flex items-start gap-1.5 text-accent leading-none">
               {s.prefix && (
-                <span class="text-[0.4em] align-top font-bold tracking-wider mr-1 inline-block">
+                <span class="text-xs md:text-sm font-extrabold tracking-wider pt-[0.6em] uppercase">
                   {s.prefix}
                 </span>
               )}
-              {s.value}
-            </p>
+              <span class="text-stat tabular-nums whitespace-nowrap">{s.value}</span>
+            </div>
             <p class="mt-3 text-lg md:text-xl font-extrabold text-ink-inverted leading-tight">
               {s.label}
             </p>
