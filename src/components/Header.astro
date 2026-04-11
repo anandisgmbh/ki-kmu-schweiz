@@ -1,0 +1,134 @@
+---
+const phoneRaw = '+41784428888';
+const phoneDisplay = '+41 78 442 88 88';
+
+const navItems = [
+  { label: 'Angebot', href: '#angebot' },
+  { label: 'Cases', href: '#stories' },
+  { label: 'Über mich', href: '#ueber-mich' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<header class="sticky top-0 z-40 border-b-2 border-ink-primary bg-bg-primary/92 backdrop-blur-sm">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-16 md:h-20 gap-4">
+      <!-- Brand -->
+      <a
+        href="#top"
+        class="font-extrabold text-ink-primary tracking-tight text-[15px] md:text-[17px] whitespace-nowrap hover:text-accent-dark transition-colors"
+      >
+        ki-kmu-schweiz.ch
+      </a>
+
+      <!-- Desktop nav -->
+      <nav aria-label="Hauptnavigation" class="hidden lg:flex items-center gap-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm font-bold text-ink-primary hover:text-accent-dark transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Phone CTA (desktop + mobile) -->
+      <div class="flex items-center gap-3">
+        <a
+          href={`tel:${phoneRaw}`}
+          class="btn-primary text-sm hidden sm:inline-flex"
+          aria-label={`Anrufen: ${phoneDisplay}`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <span class="tabular-nums">{phoneDisplay}</span>
+        </a>
+        <!-- Mobile phone button (compact) -->
+        <a
+          href={`tel:${phoneRaw}`}
+          class="sm:hidden inline-flex items-center justify-center w-11 h-11 rounded-btn bg-accent text-ink-primary border-2 border-ink-primary"
+          aria-label={`Anrufen: ${phoneDisplay}`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button
+          id="menu-toggle"
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-btn border-2 border-ink-primary bg-bg-card text-ink-primary"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Menü öffnen"
+        >
+          <svg id="icon-burger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+          <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <nav
+      id="mobile-menu"
+      aria-label="Mobile Navigation"
+      class="hidden lg:hidden pb-5 pt-2"
+    >
+      <ul class="flex flex-col gap-1">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block px-4 py-3 text-base font-bold text-ink-primary hover:bg-bg-accent rounded-btn transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconBurger = document.getElementById('icon-burger');
+  const iconClose = document.getElementById('icon-close');
+
+  if (toggle && menu && iconBurger && iconClose) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      iconBurger.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Menü öffnen' : 'Menü schliessen');
+    });
+
+    // Close on link click
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        iconBurger.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Menü öffnen');
+      });
+    });
+  }
+</script>

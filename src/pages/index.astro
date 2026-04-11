@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import AiVendorBar from '../components/AiVendorBar.astro';
 import StatsStrip from '../components/StatsStrip.astro';
@@ -23,7 +24,8 @@ const description =
   title="KI-Beratung für Schweizer KMU — ki-kmu-schweiz.ch"
   description={description}
 >
-  <main>
+  <Header />
+  <main id="top">
     <Hero />
     <AiVendorBar />
     <StatsStrip />
