@@ -1,0 +1,65 @@
+---
+const pillars = [
+  {
+    icon: 'ch',
+    title: 'CH-Datenhaltung',
+    body:
+      'Ihre Daten bleiben in der Schweiz — Azure Swiss Region, Swisscom Cloud oder eine Schweizer Alternative, passend zum Projekt.',
+  },
+  {
+    icon: 'shield',
+    title: 'nDSG-konform',
+    body:
+      'Datenverarbeitung nach Schweizer Datenschutzgesetz. Auftragsdatenverarbeitung schriftlich vor Projektstart geregelt.',
+  },
+  {
+    icon: 'lock',
+    title: 'On-Prem-Option',
+    body:
+      'Für sensible Branchen (Treuhand, Recht, Gesundheit) setze ich die Lösung komplett auf Ihrer eigenen Infrastruktur auf.',
+  },
+];
+---
+
+<section id="vertrauen" class="py-section md:py-section-lg">
+  <div class="container-page">
+    <div class="max-w-[780px] mb-12">
+      <p class="label-tag text-accent-soft mb-4">Ihre Daten</p>
+      <h2 class="text-headline text-ink-primary">
+        Ihre Daten bleiben in der Schweiz. Und bei Ihnen.
+      </h2>
+      <p class="mt-4 text-lg text-ink-secondary">
+        Der grösste Hemmschuh für KI in KMU ist die Angst vor dem Datenschutz.
+        Zu Recht: laut AXA-Studie sind nur 23 % der Schweizer Kleinstbetriebe
+        DSG-konform aufgestellt. Ich gehöre zu denen, die es richtig machen.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      {
+        pillars.map((p) => (
+          <div class="card p-7">
+            <div class="w-12 h-12 rounded-lg bg-bg-accent flex items-center justify-center mb-4">
+              {p.icon === 'ch' && <span class="text-accent text-xl font-bold">🇨🇭</span>}
+              {p.icon === 'shield' && (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              )}
+              {p.icon === 'lock' && (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent">
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+              {p.title}
+            </h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
