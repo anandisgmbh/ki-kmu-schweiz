@@ -1,0 +1,120 @@
+---
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL || '#kontakt';
+
+const offers = [
+  {
+    number: 1,
+    name: 'KI-Potenzial-Check',
+    tagline: 'Einstieg, mit Substanz',
+    price: 'CHF 2\'500',
+    priceNote: 'Fixpreis',
+    duration: '~2 Wochen',
+    bullets: [
+      '1 Tag vor Ort beim Kunden',
+      'Prozess-Screening + Interviews',
+      'Priorisierte Use-Case-Liste',
+      'ROI-Schätzung pro Use-Case',
+      'Schriftlicher Kurzbericht',
+    ],
+    cta: { label: 'Potenzial-Check buchen', href: calendlyUrl },
+    highlight: true,
+  },
+  {
+    number: 2,
+    name: 'Pilot-Projekt',
+    tagline: 'Von der Idee zur laufenden Lösung',
+    price: 'CHF 15\'000 – 35\'000',
+    priceNote: 'Fixpreis nach Assessment',
+    duration: '4 – 8 Wochen',
+    bullets: [
+      'Detailanalyse des Prozesses',
+      'Bau der Lösung (Claude, GPT, Open-Source)',
+      'Integration in Ihre Systeme',
+      'Schulung der Key-User',
+      '4 Wochen Betreuung nach Go-Live',
+    ],
+    cta: { label: 'Pilot anfragen', href: '#kontakt' },
+    highlight: false,
+  },
+  {
+    number: 3,
+    name: 'Partnerschaft & Betrieb',
+    tagline: 'Nach dem Pilot weitergehen',
+    price: 'ab CHF 2\'500',
+    priceNote: 'pro Monat',
+    duration: 'ab 6 Monate',
+    bullets: [
+      '1 – 2 Tage pro Monat Sprechstunde',
+      'Betrieb und Monitoring',
+      'Weiterentwicklung der Use-Cases',
+      'Roadmap und Priorisierung',
+      'Direkter Ansprechpartner',
+    ],
+    cta: { label: 'Partnerschaft anfragen', href: '#kontakt' },
+    highlight: false,
+  },
+];
+---
+
+<section id="angebot" class="py-section md:py-section-lg bg-bg-accent/30">
+  <div class="container-page">
+    <div class="max-w-[780px] mb-12">
+      <p class="label-tag text-accent-soft mb-4">So arbeite ich</p>
+      <h2 class="text-headline text-ink-primary">
+        Drei Stufen. Transparente Fixpreise.
+      </h2>
+      <p class="mt-4 text-lg text-ink-secondary">
+        Jede Stufe hat einen klaren Umfang, einen Fixpreis und ein definiertes Deliverable.
+        Sie steigen dort ein, wo es für Sie Sinn ergibt — und gehen nur so weit, wie Sie wollen.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {
+        offers.map((o) => (
+          <div
+            class={`card p-7 flex flex-col ${o.highlight ? 'border-accent/40 shadow-card-hover' : ''}`}
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">
+                {o.number}
+              </div>
+              <p class="label-tag text-ink-muted">{o.tagline}</p>
+            </div>
+            <h3 class="text-2xl font-serif font-semibold text-ink-primary mb-2">
+              {o.name}
+            </h3>
+            <div class="mb-5">
+              <p class="text-3xl font-bold text-accent tabular-nums">{o.price}</p>
+              <p class="text-sm text-ink-muted">{o.priceNote} · {o.duration}</p>
+            </div>
+            <ul class="space-y-2 mb-6 grow">
+              {
+                o.bullets.map((b) => (
+                  <li class="flex items-start gap-2 text-sm text-ink-secondary">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      class="text-accent shrink-0 mt-0.5"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>{b}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <a href={o.cta.href} class={o.highlight ? 'btn-primary' : 'btn-ghost'}>
+              {o.cta.label}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
