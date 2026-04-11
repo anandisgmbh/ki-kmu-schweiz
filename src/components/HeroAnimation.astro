@@ -1,0 +1,224 @@
+---
+---
+
+<div class="hero-anim" aria-hidden="true">
+  <svg
+    viewBox="0 0 500 560"
+    class="w-full h-auto max-w-[520px]"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <!-- Glow filter for center node -->
+      <filter id="lime-glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="6" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Background dot pattern -->
+      <pattern id="bg-dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="#0B0F1A" opacity="0.12" />
+      </pattern>
+    </defs>
+
+    <!-- Background with dots -->
+    <rect x="0" y="0" width="500" height="560" fill="url(#bg-dots)" />
+
+    <!-- Top node: INPUT -->
+    <g class="node node-input">
+      <rect x="170" y="24" width="160" height="62" rx="12" fill="#ffffff" stroke="#0B0F1A" stroke-width="3" />
+      <text x="250" y="50" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#6b7382" letter-spacing="1.5">
+        INPUT
+      </text>
+      <text x="250" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#0B0F1A">
+        Ihr Prozess
+      </text>
+    </g>
+
+    <!-- Line 1: Input → Center -->
+    <line x1="250" y1="86" x2="250" y2="196" stroke="#0B0F1A" stroke-width="2.5" stroke-dasharray="8 6" class="flow flow-1" />
+
+    <!-- Center node: KI AGENT (glowing) -->
+    <g class="node node-center">
+      <rect x="130" y="196" width="240" height="110" rx="16" fill="#C9FF00" stroke="#0B0F1A" stroke-width="3" class="ki-core" />
+      <text x="250" y="224" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#0B0F1A" letter-spacing="1.5">
+        KI-AGENT
+      </text>
+      <text x="250" y="254" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#0B0F1A">
+        Analyse
+      </text>
+      <text x="250" y="282" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0B0F1A" opacity="0.7">
+        prozess · tool · build · deploy
+      </text>
+    </g>
+
+    <!-- Lines 2, 3, 4: Center → 3 outputs -->
+    <line x1="190" y1="306" x2="100" y2="396" stroke="#0B0F1A" stroke-width="2.5" stroke-dasharray="8 6" class="flow flow-2" />
+    <line x1="250" y1="306" x2="250" y2="396" stroke="#0B0F1A" stroke-width="2.5" stroke-dasharray="8 6" class="flow flow-3" />
+    <line x1="310" y1="306" x2="400" y2="396" stroke="#0B0F1A" stroke-width="2.5" stroke-dasharray="8 6" class="flow flow-4" />
+
+    <!-- Output 1: Zeit -->
+    <g class="node node-output out-1">
+      <rect x="20" y="396" width="160" height="62" rx="12" fill="#ffffff" stroke="#0B0F1A" stroke-width="3" />
+      <text x="100" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#6b7382" letter-spacing="1.5">
+        ERGEBNIS
+      </text>
+      <text x="100" y="444" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#0B0F1A">
+        −42 % Zeit
+      </text>
+    </g>
+
+    <!-- Output 2: Aufträge -->
+    <g class="node node-output out-2">
+      <rect x="170" y="396" width="160" height="62" rx="12" fill="#ffffff" stroke="#0B0F1A" stroke-width="3" />
+      <text x="250" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#6b7382" letter-spacing="1.5">
+        ERGEBNIS
+      </text>
+      <text x="250" y="444" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#0B0F1A">
+        +28 % Aufträge
+      </text>
+    </g>
+
+    <!-- Output 3: Umsatz -->
+    <g class="node node-output out-3">
+      <rect x="320" y="396" width="160" height="62" rx="12" fill="#ffffff" stroke="#0B0F1A" stroke-width="3" />
+      <text x="400" y="422" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#6b7382" letter-spacing="1.5">
+        ERGEBNIS
+      </text>
+      <text x="400" y="444" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#0B0F1A">
+        24/7 läuft
+      </text>
+    </g>
+
+    <!-- Moving data packets (SMIL animateMotion) -->
+    <!-- Packet 1: top line -->
+    <circle r="7" fill="#C9FF00" stroke="#0B0F1A" stroke-width="2.5">
+      <animateMotion dur="1.6s" repeatCount="indefinite" path="M 250 86 L 250 196" />
+    </circle>
+
+    <!-- Packet 2: left output line -->
+    <circle r="7" fill="#C9FF00" stroke="#0B0F1A" stroke-width="2.5">
+      <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.4s" path="M 190 306 L 100 396" />
+    </circle>
+
+    <!-- Packet 3: center output line -->
+    <circle r="7" fill="#C9FF00" stroke="#0B0F1A" stroke-width="2.5">
+      <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.7s" path="M 250 306 L 250 396" />
+    </circle>
+
+    <!-- Packet 4: right output line -->
+    <circle r="7" fill="#C9FF00" stroke="#0B0F1A" stroke-width="2.5">
+      <animateMotion dur="1.8s" repeatCount="indefinite" begin="1.0s" path="M 310 306 L 400 396" />
+    </circle>
+
+    <!-- Swiss badge in corner -->
+    <g class="swiss-badge">
+      <circle cx="460" cy="40" r="24" fill="#0B0F1A" stroke="#0B0F1A" stroke-width="3" />
+      <text x="460" y="46" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="900" fill="#C9FF00">🇨🇭</text>
+      <text x="460" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" font-weight="900" fill="#0B0F1A" letter-spacing="1">SWISS</text>
+    </g>
+
+    <!-- Live indicator (bottom-left) -->
+    <g>
+      <circle cx="28" cy="530" r="5" fill="#C9FF00" stroke="#0B0F1A" stroke-width="2" class="live-dot" />
+      <text x="42" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="900" fill="#0B0F1A" letter-spacing="1">LIVE</text>
+    </g>
+
+    <!-- Status text (cycling via CSS) -->
+    <g>
+      <text x="90" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#6b7382">
+        <tspan class="status-line status-1">Prozess analysiert ✓</tspan>
+      </text>
+      <text x="90" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#6b7382" opacity="0">
+        <tspan class="status-line status-2">Lösung gebaut ✓</tspan>
+      </text>
+      <text x="90" y="534" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#6b7382" opacity="0">
+        <tspan class="status-line status-3">Auf Swiss Cloud deployed ✓</tspan>
+      </text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .hero-anim {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Flow lines — dashed animation */
+  .flow {
+    animation: dash-flow 1.4s linear infinite;
+  }
+  .flow-1 { animation-delay: 0s; }
+  .flow-2 { animation-delay: 0.3s; }
+  .flow-3 { animation-delay: 0.5s; }
+  .flow-4 { animation-delay: 0.7s; }
+
+  @keyframes dash-flow {
+    to { stroke-dashoffset: -28; }
+  }
+
+  /* Center KI core — subtle pulse */
+  .ki-core {
+    transform-origin: 250px 251px;
+    animation: ki-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes ki-pulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 0px rgba(201, 255, 0, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 14px rgba(201, 255, 0, 0.85));
+    }
+  }
+
+  /* Output nodes — staggered subtle bounce */
+  .node-output rect {
+    animation: out-nudge 4s ease-in-out infinite;
+  }
+  .out-1 rect { animation-delay: 0.0s; }
+  .out-2 rect { animation-delay: 0.4s; }
+  .out-3 rect { animation-delay: 0.8s; }
+
+  @keyframes out-nudge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  /* Live dot — pulse */
+  .live-dot {
+    animation: live-pulse 1.2s ease-in-out infinite;
+    transform-origin: 28px 530px;
+  }
+
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Status text cycling */
+  .status-line {
+    animation: status-cycle 4.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  .status-1 { animation-delay: 0s; }
+  .status-2 { animation-delay: 1.5s; }
+  .status-3 { animation-delay: 3.0s; }
+
+  @keyframes status-cycle {
+    0%, 22% { opacity: 0; transform: translateY(2px); }
+    5%, 20% { opacity: 1; transform: translateY(0); }
+    30%, 100% { opacity: 0; transform: translateY(-2px); }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .flow, .ki-core, .node-output rect, .live-dot, .status-line {
+      animation: none;
+    }
+  }
+</style>
