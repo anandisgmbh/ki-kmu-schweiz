@@ -1,11 +1,11 @@
 ---
 const vendors = [
-  { name: 'Claude', provider: 'Anthropic', swiss: false },
-  { name: 'ChatGPT', provider: 'OpenAI', swiss: false },
-  { name: 'Gemini', provider: 'Google', swiss: false },
-  { name: 'Mistral', provider: 'Mistral AI (EU)', swiss: false },
-  { name: 'Llama', provider: 'Meta (Open Source)', swiss: false },
-  { name: 'AlpineAI', provider: '🇨🇭 Swiss-hosted', swiss: true },
+  { name: 'Claude', provider: 'Anthropic', logo: '/logos/ai/claude.svg', swiss: false },
+  { name: 'ChatGPT', provider: 'OpenAI', logo: '/logos/ai/openai.svg', swiss: false },
+  { name: 'Gemini', provider: 'Google', logo: '/logos/ai/google.svg', swiss: false },
+  { name: 'Mistral', provider: 'Mistral AI (EU)', logo: '/logos/ai/mistral.svg', swiss: false },
+  { name: 'Llama', provider: 'Meta (Open Source)', logo: '/logos/ai/meta.svg', swiss: false },
+  { name: 'AlpineAI', provider: '🇨🇭 Swiss-hosted', logo: null, swiss: true },
 ];
 ---
 
@@ -25,7 +25,7 @@ const vendors = [
         vendors.map((v, i) => (
           <li
             class:list={[
-              'relative px-5 py-6 flex flex-col items-center justify-center text-center',
+              'relative px-5 py-6 flex flex-col items-center justify-center text-center min-h-[156px]',
               i < vendors.length - 1 && 'border-b-2 sm:border-b-2 lg:border-b-0 sm:border-r-2 lg:border-r-2 border-ink-primary',
               v.swiss && 'bg-accent',
             ]}
@@ -35,10 +35,29 @@ const vendors = [
                 Swiss
               </span>
             )}
-            <p class={`text-xl md:text-2xl font-extrabold tracking-tight ${v.swiss ? 'text-ink-primary' : 'text-ink-primary'}`}>
+
+            <div class="h-10 flex items-center justify-center mb-3">
+              {v.logo ? (
+                <img
+                  src={v.logo}
+                  alt=""
+                  width="40"
+                  height="40"
+                  class="h-10 w-auto"
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+              ) : (
+                <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+                  <path d="M 4 30 L 12 14 L 17 22 L 22 10 L 28 24 L 36 30 Z" fill="#0B0F1A" />
+                </svg>
+              )}
+            </div>
+
+            <p class={`text-xl md:text-2xl font-extrabold tracking-tight leading-none ${v.swiss ? 'text-ink-primary' : 'text-ink-primary'}`}>
               {v.name}
             </p>
-            <p class={`mt-1 text-[11px] font-medium ${v.swiss ? 'text-ink-primary' : 'text-ink-muted'}`}>
+            <p class={`mt-1.5 text-[11px] font-medium leading-tight ${v.swiss ? 'text-ink-primary/70' : 'text-ink-muted'}`}>
               {v.provider}
             </p>
           </li>
