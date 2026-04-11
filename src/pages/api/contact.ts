@@ -51,7 +51,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const apiKey = import.meta.env.RESEND_API_KEY;
   const to = import.meta.env.CONTACT_FORM_TO;
-  const from = import.meta.env.RESEND_FROM || 'KI-KMU-Schweiz <noreply@anandis.ch>';
+  const from = import.meta.env.RESEND_FROM || 'KI-KMU-Schweiz <noreply@mietkosten.ch>';
 
   if (!apiKey || !to) {
     console.error('Contact form: missing RESEND_API_KEY or CONTACT_FORM_TO env');
@@ -64,7 +64,7 @@ export const POST: APIRoute = async ({ request }) => {
   const resend = new Resend(apiKey);
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from,
       to: [to],
       replyTo: email,
@@ -79,12 +79,30 @@ export const POST: APIRoute = async ({ request }) => {
         <p style="white-space: pre-wrap">${escapeHtml(message)}</p>
       `,
     });
+
+    if (error) {
+      console.error('Resend returned error:', error);
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: 'send_failed',
+          detail: error.message ?? String(error),
+        }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log('Resend send succeeded, id:', data?.id);
   } catch (e) {
-    console.error('Resend send failed:', e);
-    return new Response(JSON.stringify({ ok: false, error: 'send_failed' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Resend send threw:', e);
+    return new Response(
+      JSON.stringify({
+        ok: false,
+        error: 'send_failed',
+        detail: e instanceof Error ? e.message : String(e),
+      }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 
   return new Response(JSON.stringify({ ok: true }), {
