@@ -1,0 +1,200 @@
+---
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL || '';
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || '';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '';
+
+const whatsappText = encodeURIComponent(
+  'Hallo Jannick, ich habe eine Frage zur KI-Beratung.'
+);
+const whatsappUrl = whatsappNumber
+  ? `https://wa.me/${whatsappNumber}?text=${whatsappText}`
+  : '';
+---
+
+<section id="kontakt" class="py-section md:py-section-lg">
+  <div class="container-page">
+    <div class="max-w-[780px] mb-12">
+      <p class="label-tag text-accent-soft mb-4">Kontakt</p>
+      <h2 class="text-headline text-ink-primary">Lassen Sie uns reden.</h2>
+      <p class="mt-4 text-lg text-ink-secondary">
+        Drei Wege — wählen Sie den, der Ihnen am besten passt. Alle führen direkt zu mir.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-5 mb-10">
+      <a
+        href={calendlyUrl || '#'}
+        class="card-hoverable p-6 flex flex-col group"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="w-12 h-12 rounded-lg bg-bg-accent flex items-center justify-center mb-4 text-2xl">
+          📅
+        </div>
+        <h3 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          30 Minuten Erstgespräch
+        </h3>
+        <p class="text-sm text-ink-secondary grow">
+          Gratis, unverbindlich, zum Kennenlernen. Sie buchen einen Termin,
+          wir sprechen.
+        </p>
+        <span class="mt-4 text-accent font-semibold text-sm group-hover:underline">
+          Termin wählen →
+        </span>
+      </a>
+
+      <a
+        href={whatsappUrl || '#'}
+        class="card-hoverable p-6 flex flex-col group"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="w-12 h-12 rounded-lg bg-[#25D366]/10 flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          WhatsApp
+        </h3>
+        <p class="text-sm text-ink-secondary grow">
+          Schnelle Frage zwischendurch? Schreiben Sie mir direkt auf WhatsApp.
+          Antwort werktags innerhalb eines Tages.
+        </p>
+        <span class="mt-4 text-accent font-semibold text-sm group-hover:underline">
+          Chat starten →
+        </span>
+      </a>
+
+      <div class="card p-6 flex flex-col">
+        <div class="w-12 h-12 rounded-lg bg-bg-accent flex items-center justify-center mb-4 text-2xl">
+          ✉️
+        </div>
+        <h3 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          Kontaktformular
+        </h3>
+        <p class="text-sm text-ink-secondary grow">
+          Für ausführlichere Anfragen. Sie beschreiben Ihre Situation, ich melde mich
+          per Mail zurück.
+        </p>
+        <a href="#formular" class="mt-4 text-accent font-semibold text-sm hover:underline">
+          Zum Formular ↓
+        </a>
+      </div>
+    </div>
+
+    <form
+      id="formular"
+      class="max-w-[720px] card p-6 md:p-8 scroll-mt-20"
+      novalidate
+    >
+      <h3 class="text-2xl font-serif font-semibold text-ink-primary mb-6">
+        Schreiben Sie mir
+      </h3>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <label class="block">
+          <span class="block text-sm font-medium text-ink-primary mb-1.5">Name *</span>
+          <input
+            type="text"
+            name="name"
+            required
+            autocomplete="name"
+            class="w-full px-4 py-2.5 border border-border rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition"
+          />
+        </label>
+        <label class="block">
+          <span class="block text-sm font-medium text-ink-primary mb-1.5">Firma *</span>
+          <input
+            type="text"
+            name="company"
+            required
+            autocomplete="organization"
+            class="w-full px-4 py-2.5 border border-border rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition"
+          />
+        </label>
+      </div>
+
+      <label class="block mb-4">
+        <span class="block text-sm font-medium text-ink-primary mb-1.5">E-Mail *</span>
+        <input
+          type="email"
+          name="email"
+          required
+          autocomplete="email"
+          class="w-full px-4 py-2.5 border border-border rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition"
+        />
+      </label>
+
+      <label class="block mb-5">
+        <span class="block text-sm font-medium text-ink-primary mb-1.5">Nachricht *</span>
+        <textarea
+          name="message"
+          required
+          rows="5"
+          class="w-full px-4 py-2.5 border border-border rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent outline-none transition resize-y"
+        ></textarea>
+      </label>
+
+      <!-- Honeypot -->
+      <input
+        type="text"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+        class="absolute -left-[9999px]"
+        aria-hidden="true"
+      />
+
+      <button type="submit" class="btn-primary w-full md:w-auto">
+        Nachricht senden
+      </button>
+
+      <p id="form-status" class="mt-4 text-sm" aria-live="polite"></p>
+    </form>
+
+    <div class="mt-10 pt-8 border-t border-border flex flex-wrap gap-x-8 gap-y-2 text-sm text-ink-muted">
+      {contactEmail && <a href={`mailto:${contactEmail}`} class="hover:text-accent">{contactEmail}</a>}
+      {contactPhone && <span>{contactPhone}</span>}
+      <a href="https://linkedin.com/in/jannick-oberbeck" target="_blank" rel="noopener" class="hover:text-accent">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('formular') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      status.textContent = 'Wird gesendet...';
+      status.className = 'mt-4 text-sm text-ink-muted';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = await res.json();
+
+        if (res.ok && body.ok) {
+          status.textContent = 'Danke! Ihre Nachricht ist angekommen. Ich melde mich in Kürze.';
+          status.className = 'mt-4 text-sm text-green-700';
+          form.reset();
+        } else if (body.issues?.length) {
+          status.textContent = body.issues.map((i: any) => i.message).join(' ');
+          status.className = 'mt-4 text-sm text-red-700';
+        } else {
+          status.textContent = 'Es ist ein Fehler aufgetreten. Bitte per E-Mail oder WhatsApp versuchen.';
+          status.className = 'mt-4 text-sm text-red-700';
+        }
+      } catch {
+        status.textContent = 'Netzwerkfehler. Bitte per E-Mail oder WhatsApp versuchen.';
+        status.className = 'mt-4 text-sm text-red-700';
+      }
+    });
+  }
+</script>
