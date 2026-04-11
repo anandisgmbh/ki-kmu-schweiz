@@ -1,66 +1,72 @@
 ---
 const pains = [
-  'Papierkram und manuelle Dokumenten-Verarbeitung',
-  'Kundenkommunikation, die im Tagesgeschäft untergeht',
-  'Offerten, die zu lange dauern und Aufträge kosten',
+  {
+    title: 'ChatGPT im Feierabend',
+    body:
+      'Ihr Team spielt mit KI, aber niemand weiss, welche Prozesse wirklich davon profitieren — und welche nicht. Am Ende sind es drei Leute, die "irgendwas mit KI" machen, ohne Plan und ohne Messung.',
+  },
+  {
+    title: 'Workshop-Verkäufer vor der Tür',
+    body:
+      'Drei Marketingagenturen haben Ihnen einen ChatGPT-Workshop angeboten. Eine davon nennt sich plötzlich "KI-Agentur". Was fehlt, ist jemand, der am Ende des Workshops noch da ist und die Lösung baut.',
+  },
+  {
+    title: 'Enterprise-Berater, sechsstellig',
+    body:
+      'Die grossen Namen kosten ab CHF 120\'000 und kommen mit drei Junior-Beratern, die Ihren Betrieb erst verstehen müssen. Für ein KMU mit 20 Mitarbeitenden wirtschaftlich nicht darstellbar.',
+  },
+  {
+    title: 'Datenschutz-Panik',
+    body:
+      'Nur 23 % der Schweizer Kleinstbetriebe sind nDSG-konform aufgestellt. Wer ChatGPT ohne Rahmen nutzt, riskiert Compliance-Probleme — und die Angst davor bremst jede ernsthafte KI-Initiative.',
+  },
 ];
 ---
 
 <section id="problem" class="py-section md:py-section-lg">
   <div class="container-page">
-    <div class="max-w-[780px]">
-      <p class="label-tag text-accent-soft mb-4">Die Situation</p>
-      <h2 class="text-headline text-ink-primary">
-        Sie wissen, dass KI etwas kann. Sie wissen nur nicht, was für Sie.
+    <div class="max-w-[840px] mb-14">
+      <p class="label-tag text-accent-dark mb-5">Das Problem</p>
+      <h2 class="text-display text-ink-primary">
+        Die meisten KI-Projekte scheitern am <span class="mark-accent">Prozess</span>,
+        nicht an der Technik.
       </h2>
-      <p class="mt-5 text-lg leading-relaxed text-ink-secondary">
-        Ihre Mitarbeitenden fragen, Ihre Kunden tun es auch, und irgendwo zwischen
-        ChatGPT-Spielereien und vollmundigen Beratungs-Versprechen fehlt der
-        ehrliche Pfad zu dem, was bei Ihnen wirklich Zeit und Geld spart.
+      <p class="mt-6 text-lg md:text-xl leading-relaxed text-ink-secondary">
+        Die Technologie ist reif. Die Modelle sind gut genug. Was fehlt,
+        ist jemand, der Ihre Realität versteht, die richtigen Hebel findet
+        und die Lösung <strong class="text-ink-primary">fertig baut</strong> —
+        nicht als Folien-Deck, sondern als Software, die Ihr Team
+        am Montag morgen aufruft.
       </p>
+    </div>
 
-      <ul class="mt-8 grid gap-3">
-        {
-          pains.map((pain) => (
-            <li class="flex items-start gap-3 text-ink-primary">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="text-accent shrink-0 mt-0.5"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              <span>{pain}</span>
-            </li>
-          ))
-        }
-      </ul>
+    <div class="grid md:grid-cols-2 gap-5">
+      {
+        pains.map((p, i) => (
+          <div class="card-soft p-7">
+            <p class="label-tag text-ink-muted mb-3">Fallstrick {String(i + 1).padStart(2, '0')}</p>
+            <h3 class="text-xl md:text-2xl font-extrabold text-ink-primary mb-3 leading-snug">
+              {p.title}
+            </h3>
+            <p class="text-ink-secondary leading-relaxed">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
 
-      <blockquote class="mt-10 p-6 md:p-8 bg-bg-accent border-l-4 border-accent rounded-r-lg">
-        <p class="text-xl md:text-2xl font-serif font-medium leading-snug text-ink-primary">
-          "34 % der Schweizer KMU nutzen KI aktiv — aber nur 23 % der Kleinstbetriebe sind DSG-konform aufgestellt."
-        </p>
-        <footer class="mt-4 text-sm text-ink-muted">
-          <cite>
-            —
-            <a
-              href="https://www.axa.ch/de/ueber-axa/medien/medienmitteilungen/aktuelle-medienmitteilungen/2025/20251008-kmu-arbeitsmarktstudie-2025-ki.html"
-              class="underline hover:text-accent"
-              target="_blank"
-              rel="noopener"
-            >
-              AXA KMU Arbeitsmarktstudie 2025
-            </a>
-          </cite>
-        </footer>
-      </blockquote>
+    <div class="mt-14 bg-ink-primary text-ink-inverted rounded-card p-8 md:p-12 border-2 border-ink-primary">
+      <p class="label-tag text-accent mb-4">Der dritte Weg</p>
+      <p class="text-2xl md:text-4xl font-extrabold leading-tight tracking-tight max-w-[900px]">
+        Kein Workshop-Zirkus. Kein sechsstelliges Enterprise-Projekt.
+        <br class="hidden md:block" />
+        <span class="text-accent">Ein Mensch, der Ihre Prozesse versteht</span>,
+        die Lösung baut und danach als Partner bleibt.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/70 font-medium">
+        <span>— Prozess-First statt Tool-First</span>
+        <span>— Fixpreise statt Overhead</span>
+        <span>— Ein Ansprechpartner statt Pitch-Team</span>
+      </div>
     </div>
   </div>
 </section>
