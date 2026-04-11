@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#fbf9f4"/>
+  <rect x="0" y="0" width="12" height="630" fill="#b45309"/>
+  <text x="80" y="260" font-family="Georgia, serif" font-size="60" font-weight="700" fill="#1c1917">
+    <tspan x="80" dy="0">In 8 Wochen vom</tspan>
+    <tspan x="80" dy="72">Prozess-Schmerz zur</tspan>
+    <tspan x="80" dy="72" fill="#b45309">laufenden KI-Lösung.</tspan>
+  </text>
+  <text x="80" y="520" font-family="Inter, sans-serif" font-size="28" font-weight="600" fill="#57534e">
+    ki-kmu-schweiz.ch
+  </text>
+  <text x="80" y="560" font-family="Inter, sans-serif" font-size="20" fill="#78716c">
+    KI-Beratung für Schweizer KMU · ETH-Background · 10+ Projekte
+  </text>
+</svg>
