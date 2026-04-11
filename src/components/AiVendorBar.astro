@@ -5,7 +5,7 @@ const vendors = [
   { name: 'Gemini', provider: 'Google', logo: '/logos/ai/google.svg', swiss: false },
   { name: 'Mistral', provider: 'Mistral AI (EU)', logo: '/logos/ai/mistral.svg', swiss: false },
   { name: 'Llama', provider: 'Meta (Open Source)', logo: '/logos/ai/meta.svg', swiss: false },
-  { name: 'AlpineAI', provider: '🇨🇭 Swiss-hosted', logo: null, swiss: true },
+  { name: 'AlpineAI', provider: '🇨🇭 Swiss-hosted', logo: '/logos/ai/alpineai.png', swiss: true },
 ];
 ---
 
@@ -37,21 +37,15 @@ const vendors = [
             )}
 
             <div class="h-10 flex items-center justify-center mb-3">
-              {v.logo ? (
-                <img
-                  src={v.logo}
-                  alt=""
-                  width="40"
-                  height="40"
-                  class="h-10 w-auto"
-                  loading="lazy"
-                  aria-hidden="true"
-                />
-              ) : (
-                <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-                  <path d="M 4 30 L 12 14 L 17 22 L 22 10 L 28 24 L 36 30 Z" fill="#0B0F1A" />
-                </svg>
-              )}
+              <img
+                src={v.logo}
+                alt=""
+                width="40"
+                height="40"
+                class="h-10 w-auto"
+                loading="lazy"
+                aria-hidden="true"
+              />
             </div>
 
             <p class={`text-xl md:text-2xl font-extrabold tracking-tight leading-none ${v.swiss ? 'text-ink-primary' : 'text-ink-primary'}`}>
