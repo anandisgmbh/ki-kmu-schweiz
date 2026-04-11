@@ -1,0 +1,66 @@
+---
+const pains = [
+  'Papierkram und manuelle Dokumenten-Verarbeitung',
+  'Kundenkommunikation, die im Tagesgeschäft untergeht',
+  'Offerten, die zu lange dauern und Aufträge kosten',
+];
+---
+
+<section id="problem" class="py-section md:py-section-lg">
+  <div class="container-page">
+    <div class="max-w-[780px]">
+      <p class="label-tag text-accent-soft mb-4">Die Situation</p>
+      <h2 class="text-headline text-ink-primary">
+        Sie wissen, dass KI etwas kann. Sie wissen nur nicht, was für Sie.
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-ink-secondary">
+        Ihre Mitarbeitenden fragen, Ihre Kunden tun es auch, und irgendwo zwischen
+        ChatGPT-Spielereien und vollmundigen Beratungs-Versprechen fehlt der
+        ehrliche Pfad zu dem, was bei Ihnen wirklich Zeit und Geld spart.
+      </p>
+
+      <ul class="mt-8 grid gap-3">
+        {
+          pains.map((pain) => (
+            <li class="flex items-start gap-3 text-ink-primary">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="text-accent shrink-0 mt-0.5"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <span>{pain}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <blockquote class="mt-10 p-6 md:p-8 bg-bg-accent border-l-4 border-accent rounded-r-lg">
+        <p class="text-xl md:text-2xl font-serif font-medium leading-snug text-ink-primary">
+          "34 % der Schweizer KMU nutzen KI aktiv — aber nur 23 % der Kleinstbetriebe sind DSG-konform aufgestellt."
+        </p>
+        <footer class="mt-4 text-sm text-ink-muted">
+          <cite>
+            —
+            <a
+              href="https://www.axa.ch/de/ueber-axa/medien/medienmitteilungen/aktuelle-medienmitteilungen/2025/20251008-kmu-arbeitsmarktstudie-2025-ki.html"
+              class="underline hover:text-accent"
+              target="_blank"
+              rel="noopener"
+            >
+              AXA KMU Arbeitsmarktstudie 2025
+            </a>
+          </cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
