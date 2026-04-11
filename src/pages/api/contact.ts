@@ -51,6 +51,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const apiKey = import.meta.env.RESEND_API_KEY;
   const to = import.meta.env.CONTACT_FORM_TO;
+  const from = import.meta.env.RESEND_FROM || 'KI-KMU-Schweiz <noreply@anandis.ch>';
 
   if (!apiKey || !to) {
     console.error('Contact form: missing RESEND_API_KEY or CONTACT_FORM_TO env');
@@ -64,10 +65,10 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     await resend.emails.send({
-      from: 'ki-kmu-schweiz.ch <noreply@ki-kmu-schweiz.ch>',
+      from,
       to: [to],
       replyTo: email,
-      subject: `Neue Anfrage via Website: ${company}`,
+      subject: `Neue Anfrage via ki-kmu-schweiz.ch: ${company}`,
       html: `
         <h2>Neue Anfrage via ki-kmu-schweiz.ch</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
