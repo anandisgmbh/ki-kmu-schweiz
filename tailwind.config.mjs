@@ -34,7 +34,7 @@ export default {
         display: ['"Inter Variable"', 'Inter', '-apple-system', 'sans-serif'],
       },
       fontSize: {
-        'mega': ['clamp(2.75rem, 6vw + 0.5rem, 5.5rem)', { lineHeight: '0.98', letterSpacing: '-0.035em', fontWeight: '800' }],
+        'mega': ['clamp(1.5rem, 5.5vw + 0.5rem, 5.5rem)', { lineHeight: '1', letterSpacing: '-0.035em', fontWeight: '800' }],
         'display': ['clamp(2.25rem, 4vw + 1rem, 4rem)', { lineHeight: '1.02', letterSpacing: '-0.03em', fontWeight: '800' }],
         'headline': ['clamp(1.875rem, 2.5vw + 1rem, 3rem)', { lineHeight: '1.08', letterSpacing: '-0.02em', fontWeight: '800' }],
         'stat': ['clamp(2.5rem, 5vw, 4.5rem)', { lineHeight: '1', letterSpacing: '-0.04em', fontWeight: '800' }],

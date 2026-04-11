@@ -44,14 +44,14 @@ const whatsappUrl = whatsappNumber
         </p>
 
         <div class="mt-10 flex flex-wrap gap-3">
-          <a href={calendlyUrl} class="btn-primary text-base">
+          <a href={calendlyUrl} class="btn-primary text-base w-full sm:w-auto">
             Erstgespräch buchen
             <span aria-hidden="true">→</span>
           </a>
-          <a href="#angebot" class="btn-ghost text-base">Pakete &amp; Fixpreise</a>
+          <a href="#angebot" class="btn-ghost text-base flex-1 sm:flex-none min-w-0">Pakete &amp; Fixpreise</a>
           <a
             href={whatsappUrl}
-            class="btn-whatsapp text-base"
+            class="btn-whatsapp text-base flex-1 sm:flex-none min-w-0"
             aria-label="Per WhatsApp schreiben"
             target="_blank"
             rel="noopener"
