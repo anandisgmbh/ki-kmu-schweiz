@@ -5,16 +5,19 @@ const offers = [
   {
     number: 1,
     name: 'KI-Potenzial-Check',
-    tagline: 'Einstieg, mit Substanz',
-    price: 'CHF 2\'500',
+    tagline: 'Einstieg mit Substanz',
+    price: "CHF 2'500",
     priceNote: 'Fixpreis',
     duration: '~2 Wochen',
+    description:
+      'Ein halbtägiger Workshop bei Ihnen vor Ort, zwei Tage Analyse, und ein schriftliches Deliverable, mit dem Sie weiterarbeiten können — auch ohne mich.',
     bullets: [
-      '1 Tag vor Ort beim Kunden',
-      'Prozess-Screening + Interviews',
-      'Priorisierte Use-Case-Liste',
-      'ROI-Schätzung pro Use-Case',
-      'Schriftlicher Kurzbericht',
+      '1 Tag vor Ort: Shadowing von 2–3 Schlüsselprozessen mit Ihren Mitarbeitenden',
+      'Prozess-Mapping der grössten Zeit-/Kostenfresser',
+      'Priorisierte Use-Case-Liste (3–5 Kandidaten) mit Aufwand vs. Nutzen',
+      'Tool-Empfehlung pro Use-Case (Claude, ChatGPT, Mistral, AlpineAI, On-Prem)',
+      'ROI-Schätzung in CHF und gesparten Stunden',
+      'Halbtägige Präsentation mit GL + schriftlicher Kurzbericht',
     ],
     cta: { label: 'Potenzial-Check buchen', href: calendlyUrl },
     highlight: true,
@@ -22,16 +25,19 @@ const offers = [
   {
     number: 2,
     name: 'Pilot-Projekt',
-    tagline: 'Von der Idee zur laufenden Lösung',
-    price: 'CHF 15\'000 – 35\'000',
+    tagline: 'Vom Konzept zur laufenden Lösung',
+    price: "CHF 15'000 – 35'000",
     priceNote: 'Fixpreis nach Assessment',
     duration: '4 – 8 Wochen',
+    description:
+      'Ein ausgewählter Use-Case wird gebaut, integriert und an Ihr Team übergeben. Am Ende läuft eine Lösung in Produktion, nicht ein Slide-Deck im Ordner.',
     bullets: [
-      'Detailanalyse des Prozesses',
-      'Bau der Lösung (Claude, GPT, Open-Source)',
-      'Integration in Ihre Systeme',
-      'Schulung der Key-User',
-      '4 Wochen Betreuung nach Go-Live',
+      'Detail-Analyse und Design des Prozesses',
+      'Bau der Lösung (Claude, GPT, Mistral, Llama, AlpineAI — je nach Anforderung)',
+      'Integration in Ihre bestehenden Systeme (Abacus, M365, Bexio, eigene APIs)',
+      'Schulung der Key-User und Übergabe der Dokumentation',
+      'nDSG-konforme Datenverarbeitung, On-Prem-Option für sensible Branchen',
+      '4 Wochen Begleitung nach Go-Live inklusive',
     ],
     cta: { label: 'Pilot anfragen', href: '#kontakt' },
     highlight: false,
@@ -39,16 +45,19 @@ const offers = [
   {
     number: 3,
     name: 'Partnerschaft & Betrieb',
-    tagline: 'Nach dem Pilot weitergehen',
-    price: 'ab CHF 2\'500',
-    priceNote: 'pro Monat',
-    duration: 'ab 6 Monate',
+    tagline: 'Nach dem Pilot skalieren',
+    price: "ab CHF 2'500",
+    priceNote: 'pro Monat · min. 6 Monate',
+    duration: 'laufend',
+    description:
+      'Laufende Weiterentwicklung, Monitoring, neue Use-Cases, Ansprechpartner für Ihr Team. Der Unterschied zwischen einem Pilot, der einschläft, und einer KI-Strategie, die wächst.',
     bullets: [
-      '1 – 2 Tage pro Monat Sprechstunde',
-      'Betrieb und Monitoring',
-      'Weiterentwicklung der Use-Cases',
-      'Roadmap und Priorisierung',
-      'Direkter Ansprechpartner',
+      '1 – 2 Tage pro Monat KI-Sprechstunde vor Ort oder remote',
+      'Betrieb und Monitoring der produktiven Lösungen',
+      'Weiterentwicklung bestehender Use-Cases',
+      'Identifikation und Priorisierung neuer Automatisierungs-Kandidaten',
+      'Direkter Ansprechpartner — kein Ticketing, kein Account-Manager',
+      'Vertretung aus dem Netzwerk bei Ausfall garantiert',
     ],
     cta: { label: 'Partnerschaft anfragen', href: '#kontakt' },
     highlight: false,
@@ -56,50 +65,73 @@ const offers = [
 ];
 ---
 
-<section id="angebot" class="py-section md:py-section-lg bg-bg-accent/30">
+<section id="angebot" class="py-section md:py-section-lg bg-bg-soft border-t-2 border-ink-primary">
   <div class="container-page">
-    <div class="max-w-[780px] mb-12">
-      <p class="label-tag text-accent-soft mb-4">So arbeite ich</p>
-      <h2 class="text-headline text-ink-primary">
-        Drei Stufen. Transparente Fixpreise.
+    <div class="max-w-[840px] mb-14">
+      <p class="label-tag text-accent-dark mb-5">Angebot</p>
+      <h2 class="text-display text-ink-primary">
+        Drei Pakete. Fixpreis. <span class="mark-accent">Keine Ausreden</span>.
       </h2>
-      <p class="mt-4 text-lg text-ink-secondary">
-        Jede Stufe hat einen klaren Umfang, einen Fixpreis und ein definiertes Deliverable.
-        Sie steigen dort ein, wo es für Sie Sinn ergibt — und gehen nur so weit, wie Sie wollen.
+      <p class="mt-6 text-lg md:text-xl leading-relaxed text-ink-secondary">
+        Jede Stufe hat einen klaren Umfang, einen Fixpreis und ein definiertes Ergebnis.
+        Sie steigen dort ein, wo es für Sie Sinn ergibt, und bleiben so lange,
+        wie Sie Mehrwert sehen. Kein Abo-Zwang, keine verdeckten Aufwände.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid lg:grid-cols-3 gap-6">
       {
         offers.map((o) => (
           <div
-            class={`card p-7 flex flex-col ${o.highlight ? 'border-accent/40 shadow-card-hover' : ''}`}
+            class:list={[
+              'p-8 flex flex-col relative',
+              o.highlight ? 'card bg-ink-primary text-ink-inverted' : 'card bg-bg-card',
+            ]}
           >
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">
+            {o.highlight && (
+              <span class="absolute -top-3 left-8 label-tag bg-accent text-ink-primary px-3 py-1.5 rounded-full border-2 border-ink-primary">
+                Empfohlener Einstieg
+              </span>
+            )}
+
+            <div class="flex items-center gap-3 mb-5">
+              <span class:list={['label-num', o.highlight && 'bg-accent !text-ink-primary']}>
                 {o.number}
-              </div>
-              <p class="label-tag text-ink-muted">{o.tagline}</p>
+              </span>
+              <p class:list={['label-tag', o.highlight ? 'text-accent' : 'text-ink-muted']}>
+                {o.tagline}
+              </p>
             </div>
-            <h3 class="text-2xl font-serif font-semibold text-ink-primary mb-2">
+
+            <h3 class:list={['text-3xl font-extrabold mb-3 leading-tight tracking-tight', o.highlight ? 'text-ink-inverted' : 'text-ink-primary']}>
               {o.name}
             </h3>
+
             <div class="mb-5">
-              <p class="text-3xl font-bold text-accent tabular-nums">{o.price}</p>
-              <p class="text-sm text-ink-muted">{o.priceNote} · {o.duration}</p>
+              <p class:list={['text-4xl font-extrabold tabular-nums tracking-tight', o.highlight ? 'text-accent' : 'text-ink-primary']}>
+                {o.price}
+              </p>
+              <p class:list={['text-sm font-medium mt-1', o.highlight ? 'text-white/60' : 'text-ink-muted']}>
+                {o.priceNote} · {o.duration}
+              </p>
             </div>
-            <ul class="space-y-2 mb-6 grow">
+
+            <p class:list={['text-[15px] leading-relaxed mb-5', o.highlight ? 'text-white/80' : 'text-ink-secondary']}>
+              {o.description}
+            </p>
+
+            <ul class="space-y-2.5 mb-7 grow">
               {
                 o.bullets.map((b) => (
-                  <li class="flex items-start gap-2 text-sm text-ink-secondary">
+                  <li class:list={['flex items-start gap-2.5 text-sm leading-snug', o.highlight ? 'text-white/90' : 'text-ink-secondary']}>
                     <svg
                       width="16"
                       height="16"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2.5"
-                      class="text-accent shrink-0 mt-0.5"
+                      stroke-width="3"
+                      class:list={['shrink-0 mt-0.5', o.highlight ? 'text-accent' : 'text-ink-primary']}
                       aria-hidden="true"
                     >
                       <polyline points="20 6 9 17 4 12" />
@@ -109,12 +141,19 @@ const offers = [
                 ))
               }
             </ul>
-            <a href={o.cta.href} class={o.highlight ? 'btn-primary' : 'btn-ghost'}>
+
+            <a href={o.cta.href} class:list={[o.highlight ? 'btn-primary' : 'btn-ghost', 'text-sm']}>
               {o.cta.label}
+              <span aria-hidden="true">→</span>
             </a>
           </div>
         ))
       }
     </div>
+
+    <p class="mt-8 text-sm text-ink-muted text-center">
+      Alle Preise verstehen sich zuzüglich MWST. Bei Stufe 1 wird der Betrag bei Beauftragung von Stufe 2
+      innerhalb von 30 Tagen vollständig angerechnet.
+    </p>
   </div>
 </section>

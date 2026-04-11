@@ -2,42 +2,48 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border bg-bg-card">
-  <div class="container-page py-12">
-    <div class="grid md:grid-cols-3 gap-8">
-      <div>
-        <p class="font-serif font-semibold text-ink-primary text-lg mb-2">
+<footer class="section-dark border-t-2 border-ink-primary">
+  <div class="container-page py-16">
+    <div class="grid md:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-14">
+      <div class="max-w-[420px]">
+        <p class="text-2xl font-extrabold text-ink-inverted mb-3 tracking-tight">
           ki-kmu-schweiz.ch
         </p>
-        <p class="text-sm text-ink-muted">
-          Praktische KI-Beratung für Schweizer KMU. Ein Ansprechpartner, ein
-          Netzwerk dahinter.
+        <p class="text-white/70 leading-relaxed">
+          Praktische KI-Beratung für Schweizer KMU.
+          Ein Ansprechpartner, ein Netzwerk dahinter, transparente Fixpreise.
         </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#kontakt" class="btn-primary text-sm">
+            Erstgespräch buchen →
+          </a>
+        </div>
       </div>
 
       <nav aria-label="Footer-Navigation">
-        <p class="label-tag text-ink-muted mb-3">Seite</p>
-        <ul class="space-y-1.5 text-sm">
-          <li><a href="#angebot" class="text-ink-secondary hover:text-accent">Angebot &amp; Preise</a></li>
-          <li><a href="#cases" class="text-ink-secondary hover:text-accent">Cases</a></li>
-          <li><a href="#ueber-mich" class="text-ink-secondary hover:text-accent">Über mich</a></li>
-          <li><a href="#faq" class="text-ink-secondary hover:text-accent">FAQ</a></li>
-          <li><a href="#kontakt" class="text-ink-secondary hover:text-accent">Kontakt</a></li>
+        <p class="label-tag text-accent mb-4">Seite</p>
+        <ul class="space-y-2 text-sm font-medium">
+          <li><a href="#angebot" class="text-white/70 hover:text-accent">Angebot &amp; Preise</a></li>
+          <li><a href="#stories" class="text-white/70 hover:text-accent">Success Stories</a></li>
+          <li><a href="#use-cases" class="text-white/70 hover:text-accent">Use-Cases</a></li>
+          <li><a href="#ueber-mich" class="text-white/70 hover:text-accent">Über mich</a></li>
+          <li><a href="#faq" class="text-white/70 hover:text-accent">FAQ</a></li>
+          <li><a href="#kontakt" class="text-white/70 hover:text-accent">Kontakt</a></li>
         </ul>
       </nav>
 
       <nav aria-label="Rechtliches">
-        <p class="label-tag text-ink-muted mb-3">Rechtliches</p>
-        <ul class="space-y-1.5 text-sm">
-          <li><a href="/impressum" class="text-ink-secondary hover:text-accent">Impressum</a></li>
-          <li><a href="/datenschutz" class="text-ink-secondary hover:text-accent">Datenschutz</a></li>
+        <p class="label-tag text-accent mb-4">Rechtliches</p>
+        <ul class="space-y-2 text-sm font-medium">
+          <li><a href="/impressum" class="text-white/70 hover:text-accent">Impressum</a></li>
+          <li><a href="/datenschutz" class="text-white/70 hover:text-accent">Datenschutz</a></li>
         </ul>
       </nav>
     </div>
 
-    <div class="mt-10 pt-6 border-t border-border text-xs text-ink-muted flex flex-wrap items-center justify-between gap-4">
+    <div class="mt-14 pt-8 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50 font-medium">
       <p>© {year} Jannick Oberbeck. Alle Rechte vorbehalten.</p>
-      <p>Made in Switzerland 🇨🇭</p>
+      <p>Made in Switzerland 🇨🇭 · Hosted in Switzerland</p>
     </div>
   </div>
 </footer>

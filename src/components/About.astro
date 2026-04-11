@@ -2,56 +2,58 @@
 import NetworkBlock from './NetworkBlock.astro';
 ---
 
-<section id="ueber-mich" class="py-section md:py-section-lg bg-bg-card">
+<section id="ueber-mich" class="py-section md:py-section-lg bg-bg-soft border-t-2 border-ink-primary">
   <div class="container-page">
-    <div class="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start max-w-[900px]">
+    <div class="grid md:grid-cols-[240px_1fr] gap-10 md:gap-14 items-start max-w-[1040px]">
       <div class="flex justify-center md:justify-start">
-        <!-- Placeholder portrait. Replace with real photo later. -->
         <div
-          class="w-40 h-40 md:w-48 md:h-48 rounded-full flex items-center justify-center text-4xl font-bold text-[#7c2d12] border-4 border-white shadow-[0_6px_24px_rgba(124,45,18,0.15)]"
-          style="background: linear-gradient(135deg, #fed7aa, #fdba74);"
-          aria-label="Foto von Jannick Oberbeck (Platzhalter)"
+          class="w-48 h-48 md:w-56 md:h-56 rounded-full flex items-center justify-center text-6xl font-extrabold text-ink-primary border-2 border-ink-primary bg-accent"
+          aria-label="Foto von Jannick Oberbeck (Platzhalter — wird vor Go-Live ersetzt)"
         >
           JO
         </div>
       </div>
 
       <div>
-        <p class="label-tag text-accent-soft mb-4">Über mich</p>
-        <h2 class="text-headline text-ink-primary">
-          Warum ich das mache.
+        <p class="label-tag text-accent-dark mb-5">Über mich</p>
+        <h2 class="text-display text-ink-primary">
+          Ingenieur. <span class="mark-accent">Nicht Berater</span>.
         </h2>
 
-        <div class="mt-6 space-y-4 text-lg leading-relaxed text-ink-secondary">
+        <div class="mt-7 space-y-5 text-lg leading-relaxed text-ink-secondary">
           <p>
-            Ich bin Jannick Oberbeck. Maschinenbau an der ETH Zürich, danach fünf Jahre
-            in der KI-Welt. Ich habe gelernt, dass die spannendste KI-Arbeit nicht in
+            Maschinenbau-Master an der ETH Zürich, dann fünf Jahre tief in der KI-Welt.
+            Ich habe als Erstes gelernt, dass die spannendste KI-Arbeit nicht in
             Lab-Präsentationen passiert, sondern in Betrieben, in denen vorher niemand
-            darüber nachgedacht hat.
+            ernsthaft darüber nachgedacht hat.
           </p>
           <p>
-            Heute helfe ich Schweizer KMU, ihre Prozesse ehrlich zu analysieren und
-            genau dort KI einzusetzen, wo sie wirklich Zeit und Geld spart. Ich komme
-            zu Ihnen ins Unternehmen, höre zu, baue, übergebe. Dann bleibe ich — wenn
-            Sie wollen — als Ansprechpartner für alles, was nachkommt.
+            Heute helfe ich Schweizer KMU, ihre Prozesse ehrlich zu analysieren
+            und genau dort KI einzusetzen, wo sie messbar Zeit und Geld spart.
+            Ich komme zu Ihnen ins Unternehmen, höre zu, baue die Lösung,
+            übergebe sie. Dann bleibe ich — wenn Sie wollen — als Ansprechpartner
+            für alles, was nachkommt.
           </p>
           <p>
             <strong class="text-ink-primary">Was ich nicht mache:</strong>
             Workshops ohne Umsetzung. Slides statt Software. Funnel statt Beratung.
+            Enterprise-Rechnungen für KMU-Realitäten.
           </p>
           <p>
             <strong class="text-ink-primary">Was ich mache:</strong>
-            10+ gelieferte Projekte. Transparente Fixpreise. Ein Ansprechpartner, nicht
-            ein Pitch-Team.
+            10+ gelieferte Projekte in Treuhand, Immobilien, Handwerk und Industrie.
+            Transparente Fixpreise. Ein Gesicht, ein Netzwerk dahinter, ein Projekt
+            nach dem nächsten — nicht zehn parallel.
           </p>
         </div>
 
-        <ul class="mt-8 grid sm:grid-cols-2 gap-2 text-sm text-ink-muted">
-          <li>🎓 ETH Zürich · Master Maschinenbau</li>
-          <li>🧠 5+ Jahre KI-Praxis</li>
-          <li>✅ 10+ umgesetzte Projekte</li>
-          <li>🏅 Anthropic Claude Certified Architect <span class="italic">(in Arbeit)</span></li>
-          <li>🇨🇭 Swiss-basiert, Deutschschweiz</li>
+        <ul class="mt-10 grid sm:grid-cols-2 gap-y-2.5 gap-x-6 text-sm text-ink-secondary font-medium">
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> Master Maschinenbau, ETH Zürich</li>
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> 5+ Jahre KI-Praxis in Industrie und KMU</li>
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> 10+ umgesetzte Projekte mit Zahlen</li>
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> Anthropic Claude Certified Architect <span class="italic text-ink-muted">(in Arbeit)</span></li>
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> Deutschschweiz-weit vor Ort</li>
+          <li class="flex items-center gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent-dark"></span> nDSG-konforme Auftragsdatenverarbeitung</li>
         </ul>
       </div>
     </div>
