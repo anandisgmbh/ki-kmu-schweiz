@@ -1,0 +1,65 @@
+@import '@fontsource/fraunces/400.css';
+@import '@fontsource/fraunces/600.css';
+@import '@fontsource/fraunces/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-primary text-ink-primary font-sans;
+    font-feature-settings: 'cv02', 'cv11', 'ss01';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif font-semibold tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-accent-soft/30;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-container mx-auto px-6 md:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-[9px] px-[18px] py-[11px] text-sm font-semibold transition-all duration-200 no-underline;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow;
+  }
+
+  .btn-ghost {
+    @apply btn bg-bg-card text-ink-primary border border-border hover:border-border-hover;
+  }
+
+  .btn-whatsapp {
+    @apply btn bg-[#25D366] text-white hover:bg-[#1ebe57];
+  }
+
+  .label-tag {
+    @apply text-[11px] font-bold uppercase tracking-[0.12em];
+  }
+
+  .card {
+    @apply bg-bg-card border border-border rounded-card shadow-card transition-all duration-200;
+  }
+
+  .card-hoverable {
+    @apply card hover:border-border-hover hover:shadow-card-hover;
+  }
+}
