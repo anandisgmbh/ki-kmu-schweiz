@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ki-kmu-schweiz.ch/sitemap-index.xml

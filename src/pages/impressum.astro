@@ -1,56 +1,70 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'jannick@ki-kmu-schweiz.ch';
-const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+41 78 442 88 88';
 ---
 
 <BaseLayout
   title="Impressum"
-  description="Impressum von ki-kmu-schweiz.ch"
+  description="Impressum von ki-kmu-schweiz.ch — KI-KMU-Schweiz GmbH, Kreuzlingen"
 >
-  <main class="container-page py-section">
+  <Header />
+  <main id="top" class="container-page py-section">
     <div class="max-w-[780px]">
-      <p class="label-tag text-accent-soft">Impressum</p>
-      <h1 class="text-headline font-serif font-semibold text-ink-primary mt-2 mb-8">
+      <p class="label-tag text-accent-dark mb-4">Impressum</p>
+      <h1 class="text-display text-ink-primary mb-10">
         Impressum
       </h1>
 
-      <div class="space-y-6 text-ink-secondary">
+      <div class="space-y-8 text-ink-secondary leading-relaxed">
         <div>
-          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
-            Verantwortliche Person
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
+            Verantwortliche Stelle
           </h2>
           <p>
-            Jannick Oberbeck<br />
-            [Strasse und Hausnummer]<br />
-            [PLZ Ort]<br />
+            KI-KMU-Schweiz GmbH<br />
+            Gaissbergstrasse 47a<br />
+            8280 Kreuzlingen<br />
             Schweiz
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
             Kontakt
           </h2>
           <p>
-            E-Mail: <a href={`mailto:${contactEmail}`} class="text-accent hover:underline">{contactEmail}</a><br />
-            {contactPhone && <>Telefon: {contactPhone}<br /></>}
+            E-Mail: <a href={`mailto:${contactEmail}`} class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">{contactEmail}</a><br />
+            Telefon: <a href={`tel:${contactPhone.replace(/\s/g, '')}`} class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">{contactPhone}</a>
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
             Unternehmensangaben
           </h2>
           <p>
-            UID: [CHE-XXX.XXX.XXX — sobald vorhanden]
+            Rechtsform: Gesellschaft mit beschränkter Haftung (GmbH)<br />
+            Sitz: Kreuzlingen<br />
+            UID: CHE-113.591.640<br />
+            Status: aktiv
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
+            Handlungsberechtigt
+          </h2>
+          <p>
+            Jannick Oberbeck, Geschäftsführer
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
             Haftungsausschluss
           </h2>
           <p>
@@ -63,13 +77,15 @@ const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '';
         </div>
 
         <div>
-          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+          <h2 class="text-xl font-extrabold text-ink-primary mb-2 tracking-tight">
             Urheberrecht
           </h2>
           <p>
             Die auf dieser Website veröffentlichten Inhalte unterliegen dem Schweizer
             Urheberrecht. Jede Verwendung ausserhalb der Grenzen des Urheberrechts bedarf
             der vorherigen schriftlichen Zustimmung des jeweiligen Rechteinhabers.
+            Die eingebundenen Marken-Logos (Anthropic/Claude, OpenAI, Google, Mistral AI,
+            Meta, AlpineAI) sind Eigentum der jeweiligen Inhaber.
           </p>
         </div>
       </div>

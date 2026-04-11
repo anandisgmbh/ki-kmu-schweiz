@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'datenschutz@ki-kmu-schweiz.ch';
@@ -9,105 +10,112 @@ const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'datenschutz@ki-kmu
   title="Datenschutz"
   description="Datenschutzerklärung für ki-kmu-schweiz.ch nach Schweizer Datenschutzgesetz (nDSG)."
 >
-  <main class="container-page py-section">
+  <Header />
+  <main id="top" class="container-page py-section">
     <div class="max-w-[780px]">
-      <p class="label-tag text-accent-soft">Datenschutz</p>
-      <h1 class="text-headline font-serif font-semibold text-ink-primary mt-2 mb-8">
+      <p class="label-tag text-accent-dark mb-4">Datenschutz</p>
+      <h1 class="text-display text-ink-primary mb-10">
         Datenschutzerklärung
       </h1>
 
-      <p class="text-ink-secondary">
-        Diese Datenschutzerklärung informiert Sie über die Erhebung, Verarbeitung und
-        Nutzung personenbezogener Daten beim Besuch dieser Website gemäss dem
-        Schweizer Bundesgesetz über den Datenschutz (nDSG, in Kraft seit 1. September 2023).
-      </p>
+      <div class="space-y-2 text-ink-secondary leading-relaxed">
+        <p>
+          Diese Datenschutzerklärung informiert Sie über die Erhebung, Verarbeitung und
+          Nutzung personenbezogener Daten beim Besuch dieser Website gemäss dem
+          Schweizer Bundesgesetz über den Datenschutz (nDSG, in Kraft seit 1. September 2023).
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        1. Verantwortliche Stelle
-      </h2>
-      <p class="text-ink-secondary">
-        Jannick Oberbeck<br />
-        [Adresse]<br />
-        [PLZ Ort]<br />
-        E-Mail: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          1. Verantwortliche Stelle
+        </h2>
+        <p>
+          KI-KMU-Schweiz GmbH<br />
+          Gaissbergstrasse 47a<br />
+          8280 Kreuzlingen<br />
+          Schweiz<br />
+          UID: CHE-113.591.640<br />
+          E-Mail: <a href={`mailto:${contactEmail}`} class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">{contactEmail}</a>
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        2. Erhebung und Verarbeitung personenbezogener Daten
-      </h2>
-      <p class="text-ink-secondary">
-        Personenbezogene Daten werden nur erhoben, wenn Sie diese im Rahmen einer
-        Anfrage (Kontaktformular, E-Mail, WhatsApp, Telefon) freiwillig angeben.
-        Ich verarbeite diese Daten ausschliesslich zur Bearbeitung Ihrer Anfrage und
-        zur anschliessenden Geschäftsbeziehung. Eine Weitergabe an Dritte erfolgt nur
-        mit Ihrer ausdrücklichen Einwilligung oder wenn gesetzlich vorgeschrieben.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          2. Erhebung und Verarbeitung personenbezogener Daten
+        </h2>
+        <p>
+          Personenbezogene Daten werden nur erhoben, wenn Sie diese im Rahmen einer
+          Anfrage (Kontaktformular, E-Mail, WhatsApp, Telefon) freiwillig angeben.
+          Wir verarbeiten diese Daten ausschliesslich zur Bearbeitung Ihrer Anfrage und
+          zur anschliessenden Geschäftsbeziehung. Eine Weitergabe an Dritte erfolgt nur
+          mit Ihrer ausdrücklichen Einwilligung oder wenn gesetzlich vorgeschrieben.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        3. Kontaktformular
-      </h2>
-      <p class="text-ink-secondary">
-        Bei Nutzung des Kontaktformulars werden Name, Firma, E-Mail-Adresse und die
-        Nachricht via Vercel Serverless Function an meinen E-Mail-Anbieter (Resend,
-        Hosting in der EU) übermittelt und anschliessend als E-Mail an mich zugestellt.
-        Die Daten werden ausschliesslich zur Beantwortung Ihrer Anfrage verwendet.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          3. Kontaktformular
+        </h2>
+        <p>
+          Bei Nutzung des Kontaktformulars werden Name, Firma, E-Mail-Adresse und die
+          Nachricht via Vercel Serverless Function an unseren E-Mail-Anbieter (Resend,
+          Hosting in der EU) übermittelt und anschliessend als E-Mail an uns zugestellt.
+          Die Daten werden ausschliesslich zur Beantwortung Ihrer Anfrage verwendet.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        4. Hosting und Server-Logs
-      </h2>
-      <p class="text-ink-secondary">
-        Die Website wird von Vercel Inc. gehostet. Beim Besuch werden technisch
-        notwendige Server-Logs erstellt (IP-Adresse, User-Agent, Zeitpunkt). Diese
-        Logs werden kurzfristig gespeichert und ausschliesslich zur Sicherstellung
-        des Betriebs und zur Abwehr von Angriffen genutzt.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          4. Hosting und Server-Logs
+        </h2>
+        <p>
+          Die Website wird von Vercel Inc. gehostet. Beim Besuch werden technisch
+          notwendige Server-Logs erstellt (IP-Adresse, User-Agent, Zeitpunkt). Diese
+          Logs werden kurzfristig gespeichert und ausschliesslich zur Sicherstellung
+          des Betriebs und zur Abwehr von Angriffen genutzt.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        5. Analytics
-      </h2>
-      <p class="text-ink-secondary">
-        Falls aktiviert, setze ich Plausible Analytics ein — ein cookieloser,
-        datenschutzfreundlicher Dienst, der keine personenbezogenen Daten sammelt und
-        keine Nutzerprofile erstellt. Siehe <a
-          href="https://plausible.io/data-policy"
-          target="_blank"
-          rel="noopener">plausible.io/data-policy</a>.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          5. Analytics
+        </h2>
+        <p>
+          Falls aktiviert, setzen wir Plausible Analytics ein — ein cookieloser,
+          datenschutzfreundlicher Dienst, der keine personenbezogenen Daten sammelt und
+          keine Nutzerprofile erstellt. Siehe <a
+            href="https://plausible.io/data-policy"
+            target="_blank"
+            rel="noopener"
+            class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">plausible.io/data-policy</a>.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        6. Eingebettete Dienste (Calendly)
-      </h2>
-      <p class="text-ink-secondary">
-        Beim Klick auf "Erstgespräch vereinbaren" werden Sie zu Calendly weitergeleitet,
-        einem Dienst von Calendly LLC (USA). Beim Nutzen von Calendly gelten deren
-        Datenschutzbestimmungen: <a
-          href="https://calendly.com/privacy"
-          target="_blank"
-          rel="noopener">calendly.com/privacy</a>.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          6. Eingebettete Dienste (Calendly)
+        </h2>
+        <p>
+          Beim Klick auf "Erstgespräch vereinbaren" werden Sie zu Calendly weitergeleitet,
+          einem Dienst von Calendly LLC (USA). Beim Nutzen von Calendly gelten deren
+          Datenschutzbestimmungen: <a
+            href="https://calendly.com/privacy"
+            target="_blank"
+            rel="noopener"
+            class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">calendly.com/privacy</a>.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        7. WhatsApp
-      </h2>
-      <p class="text-ink-secondary">
-        Beim Klick auf den WhatsApp-Button werden Sie zu WhatsApp (Meta Platforms Inc.)
-        weitergeleitet. Nachrichten, die Sie dort an mich senden, unterliegen den
-        Datenschutzbestimmungen von WhatsApp/Meta.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          7. WhatsApp
+        </h2>
+        <p>
+          Beim Klick auf den WhatsApp-Button werden Sie zu WhatsApp (Meta Platforms Inc.)
+          weitergeleitet. Nachrichten, die Sie dort an uns senden, unterliegen den
+          Datenschutzbestimmungen von WhatsApp/Meta.
+        </p>
 
-      <h2 class="text-2xl font-serif font-semibold text-ink-primary mt-10 mb-3">
-        8. Ihre Rechte
-      </h2>
-      <p class="text-ink-secondary">
-        Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und
-        Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich
-        hierfür formlos an <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
-      </p>
+        <h2 class="text-2xl font-extrabold text-ink-primary mt-10 mb-3 tracking-tight">
+          8. Ihre Rechte
+        </h2>
+        <p>
+          Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und
+          Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich
+          hierfür formlos an <a href={`mailto:${contactEmail}`} class="text-accent-dark hover:underline underline-offset-4 decoration-2 font-semibold">{contactEmail}</a>.
+        </p>
 
-      <p class="text-ink-muted text-sm mt-12">
-        Stand: April 2026
-      </p>
+        <p class="text-ink-muted text-sm mt-12">
+          Stand: April 2026
+        </p>
+      </div>
     </div>
   </main>
   <Footer />
