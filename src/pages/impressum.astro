@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'jannick@ki-kmu-schweiz.ch';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '';
+---
+
+<BaseLayout
+  title="Impressum"
+  description="Impressum von ki-kmu-schweiz.ch"
+>
+  <main class="container-page py-section">
+    <div class="max-w-[780px]">
+      <p class="label-tag text-accent-soft">Impressum</p>
+      <h1 class="text-headline font-serif font-semibold text-ink-primary mt-2 mb-8">
+        Impressum
+      </h1>
+
+      <div class="space-y-6 text-ink-secondary">
+        <div>
+          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+            Verantwortliche Person
+          </h2>
+          <p>
+            Jannick Oberbeck<br />
+            [Strasse und Hausnummer]<br />
+            [PLZ Ort]<br />
+            Schweiz
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+            Kontakt
+          </h2>
+          <p>
+            E-Mail: <a href={`mailto:${contactEmail}`} class="text-accent hover:underline">{contactEmail}</a><br />
+            {contactPhone && <>Telefon: {contactPhone}<br /></>}
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+            Unternehmensangaben
+          </h2>
+          <p>
+            UID: [CHE-XXX.XXX.XXX — sobald vorhanden]
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+            Haftungsausschluss
+          </h2>
+          <p>
+            Die Inhalte dieser Website werden mit grösstmöglicher Sorgfalt erstellt.
+            Der Anbieter übernimmt jedoch keine Gewähr für die Richtigkeit, Vollständigkeit
+            und Aktualität der bereitgestellten Inhalte. Die Nutzung der Inhalte erfolgt
+            auf eigene Gefahr. Namentlich gekennzeichnete Beiträge geben die Meinung des
+            jeweiligen Autors und nicht immer die Meinung des Anbieters wieder.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-serif font-semibold text-ink-primary mb-2">
+            Urheberrecht
+          </h2>
+          <p>
+            Die auf dieser Website veröffentlichten Inhalte unterliegen dem Schweizer
+            Urheberrecht. Jede Verwendung ausserhalb der Grenzen des Urheberrechts bedarf
+            der vorherigen schriftlichen Zustimmung des jeweiligen Rechteinhabers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
