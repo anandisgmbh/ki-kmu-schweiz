@@ -1,0 +1,55 @@
+---
+const vendors = [
+  { name: 'Claude', provider: 'Anthropic', swiss: false },
+  { name: 'ChatGPT', provider: 'OpenAI', swiss: false },
+  { name: 'Gemini', provider: 'Google', swiss: false },
+  { name: 'Mistral', provider: 'Mistral AI (EU)', swiss: false },
+  { name: 'Llama', provider: 'Meta (Open Source)', swiss: false },
+  { name: 'AlpineAI', provider: '🇨🇭 Swiss-hosted', swiss: true },
+];
+---
+
+<section aria-label="KI-Modelle, die wir integrieren" class="py-10 md:py-14 bg-bg-primary border-t-2 border-b-2 border-ink-primary">
+  <div class="container-page">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+      <p class="label-tag text-ink-primary max-w-[520px]">
+        Wir bauen mit den besten KI-Modellen. Gehostet dort, wo <span class="mark-accent">Ihre Daten hingehören</span>.
+      </p>
+      <p class="text-sm text-ink-muted max-w-[360px]">
+        Sie wählen die Technologie — oder wir empfehlen sie. Immer mit Blick auf nDSG, Kosten und Performance.
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0 border-2 border-ink-primary rounded-card overflow-hidden">
+      {
+        vendors.map((v, i) => (
+          <li
+            class:list={[
+              'relative px-5 py-6 flex flex-col items-center justify-center text-center',
+              i < vendors.length - 1 && 'border-b-2 sm:border-b-2 lg:border-b-0 sm:border-r-2 lg:border-r-2 border-ink-primary',
+              v.swiss && 'bg-accent',
+            ]}
+          >
+            {v.swiss && (
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-ink-primary text-accent px-1.5 py-0.5 rounded">
+                Swiss
+              </span>
+            )}
+            <p class={`text-xl md:text-2xl font-extrabold tracking-tight ${v.swiss ? 'text-ink-primary' : 'text-ink-primary'}`}>
+              {v.name}
+            </p>
+            <p class={`mt-1 text-[11px] font-medium ${v.swiss ? 'text-ink-primary' : 'text-ink-muted'}`}>
+              {v.provider}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-6 text-sm text-ink-secondary max-w-[680px]">
+      <strong class="text-ink-primary">AlpineAI</strong> ist unsere Empfehlung, wenn maximaler Datenschutz zählt:
+      Swiss-hosted, nDSG-konform, FINMA-tauglich. Für Treuhand, Anwalt, Gesundheit und sensible Branchen
+      die erste Wahl — ohne Abstriche beim Modell.
+    </p>
+  </div>
+</section>
