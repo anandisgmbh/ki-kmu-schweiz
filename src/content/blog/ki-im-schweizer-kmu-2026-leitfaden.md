@@ -179,3 +179,5 @@ Gute KI-Projekte werden iterativ weiterentwickelt. Deshalb bieten wir optional e
 Wenn Sie heute durch Ihren Betrieb laufen und überlegen, wo ein KI-Projekt sinnvoll sein könnte — genau dort ist der richtige Startpunkt. Nicht am grossen Strategie-Masterplan, sondern bei dem einen Prozess, bei dem Sie sich jede Woche denken: *"Das muss doch eigentlich automatisierbar sein."*
 
 Wenn Sie einen externen Blick darauf wollen, ist das Erstgespräch bei KI-KMU-Schweiz kostenlos und unverbindlich. 30 Minuten, konkret, ohne Verkaufsgespräch. [Erstgespräch buchen →](/#kontakt)
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)

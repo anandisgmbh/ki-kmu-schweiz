@@ -185,3 +185,5 @@ Wenn Sie heute nicht sicher sind, welche KI-Tools in Ihrem Betrieb genutzt werde
 ---
 
 *Weiterführend: Der [ehrliche KMU-Leitfaden zum KI-Einstieg](/blog/ki-im-schweizer-kmu-2026-leitfaden) gibt den breiteren Überblick; der [Modell-Vergleich zwischen Claude, ChatGPT, Gemini, Mistral und AlpineAI](/blog/ki-modelle-vergleich-schweizer-kmu) ergänzt die technische Auswahl.*
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)

@@ -193,3 +193,5 @@ Wer jetzt anfängt, ist in einem Jahr in der vierten Iteration. Wer erst in zwö
 ---
 
 *Weiterführend: Der [KMU-Leitfaden für den KI-Einstieg](/blog/ki-im-schweizer-kmu-2026-leitfaden/) gibt die strategische Perspektive, die [nDSG-Compliance-Fibel](/blog/ndsg-und-ki-schweizer-kmu/) die rechtlichen Grundlagen, der [Modell-Vergleich](/blog/ki-modelle-vergleich-schweizer-kmu/) die Tool-Auswahl und der [Innosuisse-Artikel](/blog/innosuisse-ki-foerderung-schweizer-kmu/) die Förderoptionen für Vorstudien.*
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)

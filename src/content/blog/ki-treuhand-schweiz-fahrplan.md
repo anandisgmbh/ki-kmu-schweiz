@@ -205,3 +205,5 @@ Wenn Sie als Treuhand-Partner dieses Thema angehen wollen, ist der pragmatischst
 ---
 
 *Weiterführend: Der [ehrliche KMU-Leitfaden zum KI-Einstieg](/blog/ki-im-schweizer-kmu-2026-leitfaden/) für den allgemeinen Rahmen, die [nDSG-Compliance-Fibel](/blog/ndsg-und-ki-schweizer-kmu/) für die datenschutzrechtliche Tiefe, der [Modell-Vergleich](/blog/ki-modelle-vergleich-schweizer-kmu/) für die Tool-Auswahl, und der [Innosuisse-Artikel](/blog/innosuisse-ki-foerderung-schweizer-kmu/) für die konkrete Förderung.*
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)

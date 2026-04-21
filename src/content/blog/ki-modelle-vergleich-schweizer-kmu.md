@@ -233,3 +233,5 @@ Wenn Sie unsicher sind, welcher Mix für Ihren Betrieb der richtige ist, ist das
 ---
 
 *Weiterführend: Der [ehrliche KMU-Leitfaden zum KI-Einstieg](/blog/ki-im-schweizer-kmu-2026-leitfaden) gibt den breiteren strategischen Überblick; die [Compliance-Fibel zu nDSG und KI](/blog/ndsg-und-ki-schweizer-kmu) vertieft die datenschutzrechtliche Seite.*
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)

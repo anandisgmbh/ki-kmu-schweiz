@@ -207,3 +207,5 @@ Wenn Sie eine Projektidee haben, von der Sie glauben, dass sie mit KI gelöst we
 ---
 
 *Weiterführend: Der [ehrliche KMU-Leitfaden zum KI-Einstieg](/blog/ki-im-schweizer-kmu-2026-leitfaden/) zeigt den strategischen Rahmen, die [Compliance-Fibel zu nDSG und KI](/blog/ndsg-und-ki-schweizer-kmu/) die datenschutzrechtliche Seite, und der [Modell-Vergleich](/blog/ki-modelle-vergleich-schweizer-kmu/) hilft bei der Tool-Auswahl.*
+
+*[→ KI-Beratung für Schweizer KMU — zurück zur Startseite](/)
