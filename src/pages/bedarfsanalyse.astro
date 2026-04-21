@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="KI-Bedarfsanalyse — Finden Sie Ihren besten Use Case"
+  description="In 5 Minuten zeigt unser KI-Assistent, wo in Ihrem Betrieb Künstliche Intelligenz am meisten Sinn ergibt. Kostenlos, interaktiv, personalisiert."
+>
+  <Header />
+  <main id="top" class="min-h-screen flex flex-col">
+    <!-- Hero banner -->
+    <div class="section-dark py-10 md:py-14 border-b-2 border-ink-primary">
+      <div class="container-page">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p class="label-tag text-accent mb-3">Interaktive Bedarfsanalyse</p>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-ink-inverted tracking-tight leading-tight">
+              Wo ergibt KI in <span class="text-accent">Ihrem Betrieb</span> am meisten Sinn?
+            </h1>
+            <p class="mt-3 text-white/70 max-w-[560px]">
+              Unser KI-Assistent analysiert in 5 Minuten Ihre Branche, Prozesse und Anforderungen —
+              und liefert eine personalisierte Empfehlung mit konkreten Use Cases und Richtwerten.
+            </p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <div class="w-3 h-3 rounded-full bg-accent animate-pulse"></div>
+            <span class="text-sm font-bold text-accent">KI-Berater online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat area -->
+    <div class="flex-1 flex flex-col bg-bg-soft">
+      <div class="container-page flex-1 flex flex-col py-6 md:py-10 max-w-[860px]">
+        <!-- Messages -->
+        <div
+          id="chat-messages"
+          class="flex-1 overflow-y-auto space-y-4 pb-4 scroll-smooth"
+          role="log"
+          aria-label="Chat-Verlauf"
+          aria-live="polite"
+        >
+          <!-- Messages are injected here by JS -->
+        </div>
+
+        <!-- Input area -->
+        <div class="sticky bottom-0 pt-4 pb-2 bg-bg-soft">
+          <form id="chat-form" class="flex gap-3">
+            <label class="sr-only" for="chat-input">Ihre Nachricht</label>
+            <input
+              type="text"
+              id="chat-input"
+              name="message"
+              placeholder="Ihre Nachricht..."
+              autocomplete="off"
+              required
+              class="flex-1 px-5 py-3.5 border-2 border-ink-primary rounded-btn text-base font-medium bg-bg-card focus:ring-2 focus:ring-accent focus:ring-offset-0 outline-none transition placeholder:text-ink-muted"
+            />
+            <button
+              type="submit"
+              id="chat-send"
+              class="btn-primary text-base px-6"
+              aria-label="Nachricht senden"
+            >
+              <span id="send-text">Senden</span>
+              <svg id="send-spinner" class="hidden animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" class="opacity-25"></circle>
+                <path d="M4 12a8 8 0 018-8" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="opacity-75"></path>
+              </svg>
+            </button>
+          </form>
+          <p class="mt-2 text-xs text-ink-muted text-center">
+            Powered by Claude · Ihre Eingaben werden nicht gespeichert · <a href="/datenschutz" class="underline hover:text-accent-dark">Datenschutz</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .msg-assistant {
+    @apply max-w-[85%] md:max-w-[75%] p-4 md:p-5 rounded-card bg-bg-card border-2 border-ink-primary text-ink-primary leading-relaxed;
+    border-bottom-left-radius: 4px;
+  }
+  .msg-user {
+    @apply max-w-[85%] md:max-w-[75%] ml-auto p-4 md:p-5 rounded-card bg-ink-primary text-ink-inverted leading-relaxed;
+    border-bottom-right-radius: 4px;
+  }
+  .msg-assistant :global(h2) {
+    @apply text-xl font-extrabold text-ink-primary mt-4 mb-2 tracking-tight;
+  }
+  .msg-assistant :global(h3) {
+    @apply text-lg font-extrabold text-ink-primary mt-3 mb-1 tracking-tight;
+  }
+  .msg-assistant :global(strong) {
+    @apply text-ink-primary font-bold;
+  }
+  .msg-assistant :global(ul), .msg-assistant :global(ol) {
+    @apply ml-5 my-2 space-y-1;
+  }
+  .msg-assistant :global(ul li) {
+    @apply list-disc;
+  }
+  .msg-assistant :global(ol li) {
+    @apply list-decimal;
+  }
+  .msg-assistant :global(a) {
+    @apply text-accent-dark underline underline-offset-2 decoration-2 font-semibold;
+  }
+  .msg-assistant :global(a:hover) {
+    @apply bg-accent text-ink-primary;
+  }
+  .msg-typing {
+    @apply max-w-[85%] md:max-w-[75%] p-4 md:p-5 rounded-card bg-bg-card border-2 border-border text-ink-muted;
+    border-bottom-left-radius: 4px;
+  }
+  .typing-dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+  .typing-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6b7382;
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+</style>
+
+<script>
+  // --- Chat State ---
+  interface Message {
+    role: 'user' | 'assistant';
+    content: string;
+  }
+
+  const messages: Message[] = [];
+  const messagesEl = document.getElementById('chat-messages')!;
+  const form = document.getElementById('chat-form') as HTMLFormElement;
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const sendBtn = document.getElementById('chat-send') as HTMLButtonElement;
+  const sendText = document.getElementById('send-text')!;
+  const sendSpinner = document.getElementById('send-spinner')!;
+
+  let isLoading = false;
+
+  // --- Markdown renderer (lightweight) ---
+  function renderMarkdown(text: string): string {
+    let html = text
+      // Headers
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      // Bold
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      // Italic
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Links
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      // Unordered lists
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      // Paragraphs (double newline)
+      .replace(/\n\n/g, '</p><p>')
+      // Single newlines within paragraphs
+      .replace(/\n/g, '<br/>');
+
+    // Wrap consecutive <li> in <ul>
+    html = html.replace(/((?:<li>.*<\/li>\s*)+)/g, '<ul>$1</ul>');
+
+    return `<p>${html}</p>`;
+  }
+
+  // --- UI helpers ---
+  function addMessage(role: 'user' | 'assistant', content: string) {
+    const div = document.createElement('div');
+    div.className = role === 'user' ? 'msg-user' : 'msg-assistant';
+
+    if (role === 'assistant') {
+      div.innerHTML = renderMarkdown(content);
+    } else {
+      div.textContent = content;
+    }
+
+    messagesEl.appendChild(div);
+    scrollToBottom();
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.id = 'typing-indicator';
+    div.className = 'msg-typing';
+    div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+    messagesEl.appendChild(div);
+    scrollToBottom();
+  }
+
+  function hideTyping() {
+    document.getElementById('typing-indicator')?.remove();
+  }
+
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+  }
+
+  function setLoading(loading: boolean) {
+    isLoading = loading;
+    input.disabled = loading;
+    sendBtn.disabled = loading;
+    sendText.classList.toggle('hidden', loading);
+    sendSpinner.classList.toggle('hidden', !loading);
+    if (!loading) {
+      input.focus();
+    }
+  }
+
+  // --- API call ---
+  async function sendToAPI(msgs: Message[]): Promise<string> {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: msgs }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      return data.text || 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.';
+    }
+
+    return data.text;
+  }
+
+  // --- Send message ---
+  async function handleSend(userText: string) {
+    if (isLoading || !userText.trim()) return;
+
+    // Add user message
+    const trimmed = userText.trim();
+    messages.push({ role: 'user', content: trimmed });
+    addMessage('user', trimmed);
+    input.value = '';
+
+    // Call API
+    setLoading(true);
+    showTyping();
+
+    try {
+      const reply = await sendToAPI(messages);
+      hideTyping();
+      messages.push({ role: 'assistant', content: reply });
+      addMessage('assistant', reply);
+
+      // PostHog tracking
+      if (typeof window !== 'undefined' && (window as any).posthog) {
+        (window as any).posthog.capture('bedarfsanalyse_message', {
+          turn: messages.length,
+          role: 'assistant',
+        });
+      }
+    } catch (e) {
+      hideTyping();
+      addMessage('assistant', 'Netzwerkfehler — bitte versuchen Sie es erneut oder kontaktieren Sie uns unter hello@ki-kmu-schweiz.ch.');
+    }
+
+    setLoading(false);
+  }
+
+  // --- Form submit ---
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleSend(input.value);
+  });
+
+  // --- Initial greeting (Claude starts the conversation) ---
+  async function initChat() {
+    setLoading(true);
+    showTyping();
+
+    // Track chat start
+    if (typeof window !== 'undefined' && (window as any).posthog) {
+      (window as any).posthog.capture('bedarfsanalyse_started');
+    }
+
+    try {
+      const reply = await sendToAPI([]);
+      hideTyping();
+      messages.push({ role: 'assistant', content: reply });
+      addMessage('assistant', reply);
+    } catch (e) {
+      hideTyping();
+      addMessage('assistant', 'Willkommen! Es gab ein kleines technisches Problem. Bitte laden Sie die Seite neu oder kontaktieren Sie uns unter hello@ki-kmu-schweiz.ch.');
+    }
+
+    setLoading(false);
+  }
+
+  // Start chat on page load
+  initChat();
+</script>

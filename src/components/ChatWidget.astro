@@ -1,0 +1,355 @@
+---
+/**
+ * Floating KI-Bedarfsanalyse chat widget.
+ * Shows as a button in the bottom-right corner.
+ * Click → opens a chat panel with Claude-powered conversation.
+ */
+---
+
+<!-- Floating trigger button -->
+<button
+  id="chat-fab"
+  type="button"
+  aria-label="KI-Bedarfsanalyse starten"
+  class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 pl-4 pr-5 py-3.5 rounded-full bg-ink-primary text-accent border-2 border-ink-primary font-extrabold text-sm shadow-lg hover:bg-accent hover:text-ink-primary transition-all duration-200"
+  style="box-shadow: 4px 4px 0 rgba(201,255,0,0.5);"
+>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+  <span class="hidden sm:inline">KI-Bedarfsanalyse</span>
+  <span class="sm:hidden">KI-Chat</span>
+</button>
+
+<!-- Chat panel (hidden by default) -->
+<div
+  id="chat-panel"
+  class="hidden fixed z-50 flex flex-col bg-bg-card border-2 border-ink-primary overflow-hidden"
+  style="border-radius: 16px; box-shadow: 8px 8px 0 rgba(11,15,26,0.15);"
+  role="dialog"
+  aria-label="KI-Bedarfsanalyse Chat"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-5 py-4 bg-ink-primary text-ink-inverted border-b-2 border-ink-primary shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-3 h-3 rounded-full bg-accent animate-pulse"></div>
+      <div>
+        <p class="font-extrabold text-sm tracking-tight">KI-Bedarfsanalyse</p>
+        <p class="text-[11px] text-white/60">Powered by Claude · 5 Minuten</p>
+      </div>
+    </div>
+    <button
+      id="chat-close"
+      type="button"
+      class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+      aria-label="Chat schliessen"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div
+    id="cw-messages"
+    class="flex-1 overflow-y-auto p-4 space-y-3 bg-bg-soft"
+    role="log"
+    aria-live="polite"
+  >
+  </div>
+
+  <!-- Input -->
+  <form id="cw-form" class="flex gap-2 p-3 border-t-2 border-ink-primary bg-bg-card shrink-0">
+    <label class="sr-only" for="cw-input">Ihre Nachricht</label>
+    <input
+      type="text"
+      id="cw-input"
+      name="message"
+      placeholder="Ihre Nachricht..."
+      autocomplete="off"
+      required
+      class="flex-1 px-4 py-2.5 border-2 border-ink-primary rounded-lg text-sm font-medium bg-bg-card focus:ring-2 focus:ring-accent outline-none transition placeholder:text-ink-muted"
+    />
+    <button
+      type="submit"
+      id="cw-send"
+      class="px-4 py-2.5 rounded-lg bg-accent text-ink-primary border-2 border-ink-primary font-extrabold text-sm hover:bg-ink-primary hover:text-accent transition-all"
+      aria-label="Senden"
+    >
+      <span id="cw-send-icon">→</span>
+      <svg id="cw-send-spin" class="hidden animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" class="opacity-25"></circle>
+        <path d="M4 12a8 8 0 018-8" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="opacity-75"></path>
+      </svg>
+    </button>
+  </form>
+
+  <!-- Footer -->
+  <p class="text-[10px] text-ink-muted text-center py-1.5 bg-bg-card border-t border-border shrink-0">
+    Eingaben nicht gespeichert · <a href="/datenschutz" class="underline">Datenschutz</a>
+  </p>
+</div>
+
+<style>
+  /* Panel positioning */
+  #chat-panel {
+    /* Desktop */
+    bottom: 6rem;
+    right: 1.5rem;
+    width: 420px;
+    height: 580px;
+  }
+  /* Mobile — larger panel */
+  @media (max-width: 640px) {
+    #chat-panel {
+      bottom: 1rem;
+      right: 1rem;
+      left: 1rem;
+      width: auto;
+      height: calc(100dvh - 6rem);
+      border-radius: 16px;
+    }
+  }
+
+  /* Message styles */
+  .cw-msg-ai {
+    max-width: 88%;
+    padding: 10px 14px;
+    border-radius: 12px 12px 12px 4px;
+    background: #ffffff;
+    border: 1.5px solid #e6e8ec;
+    color: #0B0F1A;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .cw-msg-user {
+    max-width: 82%;
+    margin-left: auto;
+    padding: 10px 14px;
+    border-radius: 12px 12px 4px 12px;
+    background: #0B0F1A;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .cw-msg-ai :global(strong) {
+    font-weight: 700;
+    color: #0B0F1A;
+  }
+  .cw-msg-ai :global(h2) {
+    font-size: 15px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  .cw-msg-ai :global(h3) {
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 8px;
+    margin-bottom: 3px;
+  }
+  .cw-msg-ai :global(ul), .cw-msg-ai :global(ol) {
+    margin: 6px 0 6px 16px;
+  }
+  .cw-msg-ai :global(li) {
+    list-style: disc;
+    margin: 2px 0;
+  }
+  .cw-msg-ai :global(a) {
+    color: #7FAE00;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .cw-typing {
+    max-width: 88%;
+    padding: 12px 16px;
+    border-radius: 12px 12px 12px 4px;
+    background: #ffffff;
+    border: 1.5px solid #e6e8ec;
+  }
+  .cw-dots {
+    display: inline-flex;
+    gap: 4px;
+  }
+  .cw-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #6b7382;
+    animation: cw-bounce 1.4s ease-in-out infinite;
+  }
+  .cw-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .cw-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes cw-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* Open animation */
+  #chat-panel.chat-open {
+    display: flex;
+    animation: panel-in 0.25s ease-out;
+  }
+  @keyframes panel-in {
+    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>
+
+<script>
+  // --- Elements ---
+  const fab = document.getElementById('chat-fab')!;
+  const panel = document.getElementById('chat-panel')!;
+  const closeBtn = document.getElementById('chat-close')!;
+  const msgsEl = document.getElementById('cw-messages')!;
+  const form = document.getElementById('cw-form') as HTMLFormElement;
+  const input = document.getElementById('cw-input') as HTMLInputElement;
+  const sendBtn = document.getElementById('cw-send') as HTMLButtonElement;
+  const sendIcon = document.getElementById('cw-send-icon')!;
+  const sendSpin = document.getElementById('cw-send-spin')!;
+
+  interface Msg { role: 'user' | 'assistant'; content: string; }
+  const messages: Msg[] = [];
+  let isOpen = false;
+  let isLoading = false;
+  let hasInitialized = false;
+
+  // --- Markdown (lightweight) ---
+  function md(text: string): string {
+    return text
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      .replace(/((?:<li>.*?<\/li>\s*)+)/gs, '<ul>$1</ul>')
+      .replace(/\n\n/g, '<br/><br/>')
+      .replace(/\n/g, '<br/>');
+  }
+
+  // --- UI ---
+  function addMsg(role: 'user' | 'assistant', content: string) {
+    const div = document.createElement('div');
+    div.className = role === 'user' ? 'cw-msg-user' : 'cw-msg-ai';
+    div.innerHTML = role === 'assistant' ? md(content) : escapeHtml(content);
+    msgsEl.appendChild(div);
+    scrollBottom();
+  }
+
+  function escapeHtml(s: string): string {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function showTyping() {
+    const d = document.createElement('div');
+    d.id = 'cw-typing';
+    d.className = 'cw-typing';
+    d.innerHTML = '<div class="cw-dots"><span></span><span></span><span></span></div>';
+    msgsEl.appendChild(d);
+    scrollBottom();
+  }
+
+  function hideTyping() { document.getElementById('cw-typing')?.remove(); }
+
+  function scrollBottom() {
+    requestAnimationFrame(() => { msgsEl.scrollTop = msgsEl.scrollHeight; });
+  }
+
+  function setLoading(v: boolean) {
+    isLoading = v;
+    input.disabled = v;
+    sendBtn.disabled = v;
+    sendIcon.classList.toggle('hidden', v);
+    sendSpin.classList.toggle('hidden', !v);
+    if (!v) input.focus();
+  }
+
+  // --- API ---
+  async function callAPI(msgs: Msg[]): Promise<string> {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: msgs }),
+    });
+    const data = await res.json();
+    return data.text || 'Fehler — bitte versuchen Sie es erneut.';
+  }
+
+  // --- Send ---
+  async function send(text: string) {
+    if (isLoading || !text.trim()) return;
+    const t = text.trim();
+    messages.push({ role: 'user', content: t });
+    addMsg('user', t);
+    input.value = '';
+    setLoading(true);
+    showTyping();
+
+    try {
+      const reply = await callAPI(messages);
+      hideTyping();
+      messages.push({ role: 'assistant', content: reply });
+      addMsg('assistant', reply);
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('bedarfsanalyse_msg', { turn: messages.length });
+      }
+    } catch {
+      hideTyping();
+      addMsg('assistant', 'Netzwerkfehler — bitte erneut versuchen.');
+    }
+    setLoading(false);
+  }
+
+  // --- Init greeting ---
+  async function initGreeting() {
+    if (hasInitialized) return;
+    hasInitialized = true;
+    setLoading(true);
+    showTyping();
+
+    if ((window as any).posthog) {
+      (window as any).posthog.capture('bedarfsanalyse_opened');
+    }
+
+    try {
+      const reply = await callAPI([]);
+      hideTyping();
+      messages.push({ role: 'assistant', content: reply });
+      addMsg('assistant', reply);
+    } catch {
+      hideTyping();
+      addMsg('assistant', 'Willkommen! Leider gibt es gerade ein technisches Problem. Kontaktieren Sie uns unter hello@ki-kmu-schweiz.ch.');
+    }
+    setLoading(false);
+  }
+
+  // --- Open / Close ---
+  function openPanel() {
+    isOpen = true;
+    fab.classList.add('hidden');
+    panel.classList.remove('hidden');
+    panel.classList.add('chat-open');
+    input.focus();
+    if (!hasInitialized) initGreeting();
+  }
+
+  function closePanel() {
+    isOpen = false;
+    panel.classList.add('hidden');
+    panel.classList.remove('chat-open');
+    fab.classList.remove('hidden');
+  }
+
+  fab.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+  form.addEventListener('submit', (e) => { e.preventDefault(); send(input.value); });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closePanel();
+  });
+</script>
